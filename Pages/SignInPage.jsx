@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import UserService from '../Services/UserService';
 
 const SignInPage = () => {
 
@@ -21,47 +21,71 @@ const SignInPage = () => {
             return;
         }
     
-        // try {
-        //     const response = await UserService.addUser(user);    
-        // }
-        // catch (error) {
-        //     console.error(error);
-        // }
+        try {
+            const response = await UserService.addUser(user);    
+            console.log(response);
+        }
+        catch (error) {
+            console.error(error);
+        }
     };
     
-    return <Container className='d-flex flex-column align-items-center justify-content-center'>
-    
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" name='email' value={user.email} onChange={handleChange}/>
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+    return <>
+    {/* <div className="form-container">  */}
+    <Form onSubmit={handleSubmit} >
+
+      <Form.Group className="mb-3"  >
+        <Form.Label>Nom</Form.Label>
+        <Form.Control type="text" placeholder="Entrez votre nom" name='name' value={user.name} onChange={handleChange} required={true}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter name" name='name' value={user.name} onChange={handleChange}/>
-        <Form.Text className="text-muted">
-        </Form.Text>
+      <Form.Group className="mb-3" >
+        <Form.Label>Prénom</Form.Label>
+        <Form.Control type="text" placeholder="Entrez votre nom" name='first_name' value={user.first_name} onChange={handleChange} required={true}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" name='password' value={user.password} onChange={handleChange}/>
+      <Form.Group className="mb-3" >
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="email" placeholder="Entrez votre email" name='email' value={user.email} onChange={handleChange} required={true}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Verifiez password" name='verifyPassword' value={user.verifyPassword} onChange={handleChange}/>
+      <Form.Group className="mb-3" >
+        <Form.Label>Mot de passe</Form.Label>
+        <Form.Control type="password" placeholder="Choisissez un mot de passe" name='password' value={user.password} onChange={handleChange} required={true}/>
+      </Form.Group>
+
+      <Form.Group className="mb-3" >
+        <Form.Label>Verifiez votre mot de passe</Form.Label>
+        <Form.Control type="password" placeholder="Verifiez votre mot de passe" name='verifyPassword' value={user.verifyPassword} onChange={handleChange} required={true}/>
+      </Form.Group>
+
+      <Form.Group className="mb-3" >
+        <Form.Label>Adresse</Form.Label>
+        <Form.Control type="text" placeholder="Entrez votre adresse" name='address' value={user.address} onChange={handleChange} required={true}/>
+      </Form.Group>
+
+      <Form.Group className="mb-3" >
+        <Form.Label>Ville</Form.Label>
+        <Form.Control type="text" placeholder="Entrez votre ville" name='city' value={user.city} onChange={handleChange} required={true}/>
+      </Form.Group>
+
+      <Form.Group className="mb-3" >
+        <Form.Label>Code postal</Form.Label>
+        <Form.Control type="text" placeholder="Entrez votre code postal" name='zipcode' value={user.zipcode} onChange={handleChange} required={true}/>
+      </Form.Group>
+
+      <Form.Group className="mb-3" >
+        <Form.Label>Téléphone</Form.Label>
+        <Form.Control type="tel" placeholder="Entrez votre numéro de telephone" name='phone' value={user.phone} onChange={handleChange} required={true}/>
       </Form.Group>
 
       <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
-    </Container>;
+    {/* </div> */}
+
+    </>;
 
 }
  
