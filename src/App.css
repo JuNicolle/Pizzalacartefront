@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Kay+Pho+Du:wght@400;500;600;700&display=swap');
+
+:root {
+  --background-color: #f8f9fa;
+  --gray-color: #bebebe84;
+  --white-color: whitesmoke;
+  --text-color: #565353;
+  --red-color:#C72D2D;
+  --green-color:#488517;
+}
+
+
 /* Conteneur principal */
 .form-container {
   display: flex;
@@ -5,12 +17,11 @@
   align-items: center;    
   height: 100vh;          
   width: 100vw;           
-  background-color: #f8f9fa; 
+  background-color: var(--background-color); 
   overflow: hidden;       
   padding: 0;             
   box-sizing: border-box; 
 }
-
 /* Formulaire */
 form {
   width: 100%;            
@@ -23,35 +34,277 @@ form {
   margin: 0;              
 }
 
+/* Navbar et entete Pizzalacarte */
 .navBarBody{
   display: flex;
-  justify-content: space-between;
-  width: 100vw;
-}
+  flex-direction: column;
 
+  
+}
 .navBar{
   display: flex;
   justify-content: space-between;
   width: 100vw;
   gap: 10px;
-  background-color: #f8f9fa;
+  background-color: var(--background-color);
   padding: 10px;
 }
-
 .navLink {
   display: flex;
   gap: 5vw;
 }
-
-body{
+.body{
   display: flex;
-  
+  min-height: 100vh;
 }
-
+.app{
+  min-height: 100vh;
+}
 .bodyApp{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   height: 100vh;          
   width: 100vw;   
+}
+.navLinkGrey{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  background-color: var(--gray-color);
+  height: 10vh;
+  width: 26vw;
+  border:1px solid #d0c9c9;
+}
+
+.navLinkGrey:hover, .navLinkWhite:hover{
+  background-color: rgba(128, 128, 128, 0.551);
+}
+.navLinkWhite{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  background-color: var(--white-color);
+  color: var(--text-color);
+  height: 10vh;
+  width: 26vw;
+  border:1px solid #d0c9c9;
+}
+.navBarButton{
+  text-decoration: none;
+  font-family: "Kay Pho Du", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 4vh;
+  color: var(--text-color);
+}
+.navBarHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+  height: 12vh;
+  width: 80vw;
+  padding-left: 7vw;
+  padding-right: 4vw;
+}
+#titlePizz{
+  font-family: "Kay Pho Du", serif;
+  font-style:normal;
+  color: var(--text-color);
+  font-size: 6vh;
+}
+#loginButton{
+  background-color: var(--gray-color);
+  border: none;
+  border-radius: 25px;
+}
+#loginButton:hover{
+  background-color: var(--green-color);
+}
+#loginButton a{
+  font-family: "Kay Pho Du", serif;
+  text-decoration: none;
+  font-style: normal;
+  font-size: 2vh;
+  color: var(--text-color);
+}
+#loginButton a:hover{
+  color: var(--white-color);
+}
+
+.navBarHeader img{
+  width: 4vw;
+}
+
+.logoTitle{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* .rightRuban{
+  background-color:var(--red-color);
+  width: 510px;
+  height:200vh;
+} */
+
+.bodyNavBar{
+  display: flex;
+  flex-basis: auto;
+}
+
+.locationPage {
+  display: flex;  
+
+}
+
+
+.leftPart {
+  width: 78vw;
+  min-height: auto; 
+  height: 100vh;
+  transition: filter 0.3s ease;
+}
+
+.leftPart.blurred {
+  filter: blur(5px); 
+  pointer-events: none; 
+}
+
+.rightPart {
+  width: 22vw;
+  background-color: var(--red-color);
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 4vh;
+  color: var(--white-color);
+  font-family: "Kay Pho Du", serif;
+}
+
+.homePageInfos{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 6vw;
+  align-items: center;
+  height: 10vh;
+}
+
+.homePageInfos h3{
+  font-family: "Kay Pho Du", serif;
+  width: 60%;
+  font-size: 3vh;
+}
+
+#pizzaOfTheMonth{
+  background-color: var(--red-color);
+  width: 45vw;
+  height: 10vh;
+  padding-top:3vh;
+  padding-left: 2vw;
+  padding-bottom: 3vh;
+  display: flex;
+  align-items: center;
+  color: whitesmoke;
+  font-family: "Kay Pho Du", serif;
+  
+  position: relative;
+  clip-path: ellipse(530px 140px at 10% 110%);
+  ;
+}
+
+#pizzaOfTheMonth h2{
+  width: 50%;
+  font-size: 4vh;
+}
+
+.listItems{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:3vw;
+  background-color: var(--gray-color);
+  padding-top: 4vh;
+}
+
+.listLocations{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap:2vh;
+  background-color: var(--gray-color);
+  height: 100vh;
+  padding-left: 5vw;
+  padding-top: 4vh;
+}
+
+.listLocations li{
+  list-style: none;
+  font-family: "Kay Pho Du", serif;
+  font-size: 4vh;
+}
+
+.listLocations h2{
+  font-family: "Kay Pho Du", serif;
+  font-size: 8vh;
+}
+
+.card{
+  border-radius: 25px;
+}
+
+.productModal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25px;
+  width: 35vw;
+  background-color: whitesmoke;
+  
+  padding: 17px;
+  gap:8px;
+}
+
+.productModal img{
+  width: 80%;
+  border-radius: 25px;
+}
+
+.productModal p{
+  font-family: "Kay Pho Du", serif;
+  font-weight:bold;
+}
+
+.productModal h2{
+  font-family: "Kay Pho Du", serif;
+  font-weight:normal;
+}
+
+.overlayStyles{
+  position: "fixed";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-Color: "rgba(0, 0, 0, 0.5)";
+  display: "flex";
+  justify-Content: "center";
+  align-Items: "center";
+}
+
+.productModal input{
+  height: 10vh;
+  width: 90%;
+  border-radius: 25px;
+  border: 1px solid gray
+}
+
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10vh;
 }

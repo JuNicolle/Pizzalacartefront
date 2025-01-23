@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import UserService from "../Services/UserService";
 import axios from 'axios';
 import AuthContext from "../Context/AuthContext";
+import NavBar from "../Components/NavBar";
 
 
 const LoginPage = () => {
@@ -31,6 +32,10 @@ const LoginPage = () => {
 
     return <>
 
+<div className="locationPage">
+    <div className="leftPart">
+        <NavBar />
+        <div className="loginForm">
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" >
                 <Form.Label>Email</Form.Label>
@@ -46,6 +51,14 @@ const LoginPage = () => {
                 Se connecter
             </Button>
         </Form>
+        </div>
+    </div>
+    <div className="rightPart">
+    <h2>Votre panier</h2>
+    </div>
+
+    </div>
+        
 
 
 

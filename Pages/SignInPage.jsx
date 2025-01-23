@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import UserService from '../Services/UserService';
+import NavBar from '../Components/NavBar';
 
 const SignInPage = () => {
 
@@ -31,8 +32,10 @@ const SignInPage = () => {
     };
     
     return <>
-    {/* <div className="form-container">  */}
-    <Form onSubmit={handleSubmit} >
+    <div className="locationPage">
+    <div className="leftPart">
+        <NavBar />
+        <Form onSubmit={handleSubmit} >
 
       <Form.Group className="mb-3"  >
         <Form.Label>Nom</Form.Label>
@@ -83,7 +86,15 @@ const SignInPage = () => {
         Submit
       </Button>
     </Form>
-    {/* </div> */}
+    </div>
+    <div className="rightPart">
+    <h2>Votre panier</h2>
+    </div>
+
+    </div>
+   
+    
+
 
     </>;
 

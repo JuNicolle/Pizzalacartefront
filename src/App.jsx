@@ -6,10 +6,10 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthContext from "../Context/AuthContext";
 import { useState } from "react";
-import NavBar from "../Components/NavBar";
 import AuthService from "../Services/AuthService";
 import AccountPage from "../Pages/AccountPage";
 import RouteSecu from "../Components/RouteSecu";
+import LocationPage from "../Pages/LocationPage";
 
 function App() {
   const [isAuthentified, setIsAuthentified] = useState(AuthService.isValid());
@@ -22,11 +22,11 @@ function App() {
           <AuthContext.Provider
             value={{ isAuthentified, setIsAuthentified, user, setUser }}
           >
-            <NavBar />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/LoginPage" element={<LoginPage />} />
               <Route path="/SignInPage" element={<SignInPage />} />
+              <Route path="/LocationPage" element={<LocationPage />} />
 
               <Route element={<RouteSecu />}>
               <Route path="/AccountPage" element={<AccountPage />} />
