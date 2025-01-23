@@ -64,8 +64,13 @@ const HomePage = () => {
               <h3>Aujourd'hui nous sommes à </h3>
             </div>
           </div>
+  
+          <div className="newIngredient">
+            <span>Nouvel ingrédient du moment : Pepperonni !</span>
+          </div>
 
           <div className="listItems">
+            
             {products.map((product) => (
               <div key={product.id_product} onClick={() => handleCardClick(product)}>
               <ProductCard key={product.id_product} ProductCard={product} />

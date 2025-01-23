@@ -35,8 +35,9 @@ const SignInPage = () => {
     <div className="locationPage">
     <div className="leftPart">
         <NavBar />
+        <div className='bodyLogin'>
         <Form onSubmit={handleSubmit} >
-
+      <h3>Inscription</h3>
       <Form.Group className="mb-3"  >
         <Form.Label>Nom</Form.Label>
         <Form.Control type="text" placeholder="Entrez votre nom" name='name' value={user.name} onChange={handleChange} required={true}/>
@@ -86,6 +87,7 @@ const SignInPage = () => {
         Submit
       </Button>
     </Form>
+    </div>
     </div>
     <div className="rightPart">
     <h2>Votre panier</h2>

@@ -8,7 +8,7 @@ const ProductModal = ({ show, onClose, product }) => {
     <div  style={overlayStyles}>
       <div className="productModal" >
         <h2>{product.name}</h2>
-        <img src={product.image_url} alt="" />
+        <img src={`http://localhost:3000/images/${product.image_url}`} alt="" />
         <p>{product.description}</p>
         <p>Allergènes : {product.allergens}</p>
         <p>Prix : {product.price} €</p>

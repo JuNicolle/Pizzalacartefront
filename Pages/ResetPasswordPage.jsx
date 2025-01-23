@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 
-const LoginPage = () => {
+const ResetPasswordPage = () => {
 
     const [user, setUser] = useState({});
     const {isAuthentified, setIsAuthentified} = useContext(AuthContext);
@@ -45,22 +45,14 @@ const LoginPage = () => {
                 <Form.Control type="email" placeholder="Entrez votre email" name='email' value={user.email} onChange={handleChange} required />
             </Form.Group>
 
-            <Form.Group className="mb-3 col-9" >
-                <Form.Label>Mot de passe</Form.Label>
-                <Form.Control type="password" placeholder="Entrez votre mot de passe" name='password' value={user.password} onChange={handleChange} required />
-            </Form.Group>
-
+           
             <Button variant="primary" type="submit">
-                Se connecter
+                Envoyez moi un nouveau mot de passe
             </Button>
         </Form>
         </div>
 
-        <div className="noAccount">
-            <img src="/src/assets/pizza.png" alt="" />
-            <Link to={"/SignInPage"}><Button variant="success" href="/register">Pas encore de compte ? Inscrivez vous !</Button></Link>
-            <Link to={"/ResetPasswordPage"}><Button variant="danger" href="/register">Mot de passe oublié ?</Button></Link>
-        </div>
+        
         </div>
     </div>
     <div className="rightPart">
@@ -75,4 +67,4 @@ const LoginPage = () => {
     </>;
 }
 
-export default LoginPage;
+export default ResetPasswordPage;
