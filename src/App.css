@@ -149,28 +149,31 @@ form {
 
 .locationPage {
   display: flex;
+  min-height: 100%;
+  position: relative;
 }
 
 .leftPart {
   width: 78vw;
-  min-height: auto;
-  height: 110vh;
-  transition: filter 0.3s ease;
-}
-
-.leftPart.blurred {
-  filter: blur(5px);
-  pointer-events: none;
+  min-height: 100%;
 }
 
 .rightPart {
   width: 22vw;
   background-color: var(--red-color);
-  display: flex;
-  justify-content: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
   padding-top: 4vh;
   color: var(--white-color);
   font-family: "Kay Pho Du", serif;
+  display: flex;
+  justify-content: center;
+}
+.leftPart.blurred {
+  filter: blur(5px);
+  pointer-events: none;
 }
 
 .homePageInfos {
@@ -335,4 +338,50 @@ form {
 
 .card{
   height:27rem;
+}
+
+.buttonOnline{
+  display: flex;
+  gap:10px;
+}
+
+.buttonOnline a{
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: "Kay Pho Du", serif;
+}
+
+.buttonMdp a{
+  color: whitesmoke;
+  text-decoration: none;
+  font-family: "Kay Pho Du", serif;
+}
+
+.bodyAccount{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 4vw;
+  padding-top: 2vh;
+  font-family: "Kay Pho Du", serif;
+  
+}
+
+.coordonnees{
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  width: 65vw;
+  padding-bottom: 4vh;
+}
+
+.inputAccount{
+  display: flex;
+  justify-content: space-between;
+  gap:20vw;
+  border-bottom: solid 1px rgb(211, 202, 202);
+}
+
+.inputAccount img{
+  width: 2vw;
 }

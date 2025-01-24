@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar";
 import ProductService from "../Services/ProductService";
 import ProductCard from "../Components/ProductCard";
-import LocationService from "../Services/LocationService";
-import { useParams } from "react-router-dom";
 import ProductModal from "../Components/ProductModal";
-
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
 
   const fetchProducts = async () => {
     try {
@@ -26,29 +24,24 @@ const HomePage = () => {
   }, []);
 
   const handleCardClick = (product) => {
-    setSelectedProduct(product); // Définit le produit sélectionné
-    setShowModal(true);         // Affiche la modal
+    setSelectedProduct(product);
+    setShowModal(true);
   };
 
-  // FONCTION POUR AFFICHER L'EMPLACEMENT DU CAMION EN FONCTION DU JOUR
-
-  // const [locations, setLocations] = useState([]);
-
-  // const {id} = useParams();
-  // const fetchLocations = async () => {
-
-  //     try{
-  //         const response = await LocationService.GetLocationById(id);
-  //         console.log(response);
-
-  //     } catch (error) {
-  //         console.error(error);
-  //     }
-  // };
-
-  //     useEffect(() => {
-  //         fetchLocations();
-  //     },[]);
+  const handleAddToCart = async (product, quantity, specialInstructions) => {
+    try {
+      await CartService.addToCart(
+        currentOrderId,
+        product.id_product,
+        quantity,
+        specialInstructions
+      );
+      // Rafraîchir le panier ici si nécessaire
+      setShowModal(false);
+    } catch (error) {
+      console.error("Erreur lors de l'ajout au panier:", error);
+    }
+  };
 
   return (
     <>
@@ -70,17 +63,16 @@ const HomePage = () => {
           </div>
 
           <div className="listItems">
-            
             {products.map((product) => (
               <div key={product.id_product} onClick={() => handleCardClick(product)}>
-              <ProductCard key={product.id_product} ProductCard={product} />
+                <ProductCard key={product.id_product} ProductCard={product} />
               </div>
             ))}
           </div>
         </div>
 
         <div className="rightPart">
-          <h2>Votre panier</h2>
+         <h2>Votre Panier</h2>
         </div>
       </div>
 
@@ -88,6 +80,7 @@ const HomePage = () => {
         show={showModal}
         onClose={() => setShowModal(false)}
         product={selectedProduct}
+        onAddToCart={handleAddToCart}
       />
     </>
   );

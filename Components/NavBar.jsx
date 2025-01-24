@@ -24,9 +24,22 @@ const NavBar = () => {
           </div>
           <div>
             <div>
+            {isAuthentified == false ? <>
               <Button id="loginButton">
                 <Link to={"/LoginPage"}>Se connecter / S'inscrire</Link>
               </Button>
+              </> : <>
+              <div className="buttonOnline">
+                <div className="buttonCo">
+              <Button variant="success">
+                <Link to={"/AccountPage"}>Mon compte</Link>
+              </Button>
+              </div>
+              <Button variant="danger">
+                <Link to={"/"} onClick={handleLogout}>Deconnexion</Link>
+              </Button>
+              </div>
+              </>}
             </div>
             <div></div>
           </div>
@@ -45,9 +58,10 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="navLinkGrey">
-          <Link to={"/LocationPage"} className="navBarButton">
+          <a href="tel:0612345678" className="navBarButton">
             Appelez nous
-          </Link>
+         </a>
+          
         </div>
 
         {/* {isAuthentified == false ? <>

@@ -5,12 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthContext from "../Context/AuthContext";
+import { CartProvider } from '../Context/CartContext';
 import { useState } from "react";
 import AuthService from "../Services/AuthService";
 import AccountPage from "../Pages/AccountPage";
 import RouteSecu from "../Components/RouteSecu";
-import LocationPage from "../Pages/LocationPage";
 import ResetPasswordPage from "../Pages/ResetPasswordPage";
+import LocationPage from "../Pages/LocationPage";
 
 function App() {
   const [isAuthentified, setIsAuthentified] = useState(AuthService.isValid());
@@ -23,6 +24,7 @@ function App() {
           <AuthContext.Provider
             value={{ isAuthentified, setIsAuthentified, user, setUser }}
           >
+            <CartProvider>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/LoginPage" element={<LoginPage />} />
@@ -35,6 +37,7 @@ function App() {
               </Route>
               
             </Routes>
+            </CartProvider>
           </AuthContext.Provider>
         </BrowserRouter>
       </div>

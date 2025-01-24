@@ -39,6 +39,7 @@ const LoginPage = () => {
         <NavBar />
         <div className="bodyLogin">
         <div className="loginForm">
+
         <Form onSubmit={handleSubmit} className="form">
             <Form.Group className="mb-3 col-9" >
                 <Form.Label>Email</Form.Label>
@@ -54,6 +55,7 @@ const LoginPage = () => {
                 Se connecter
             </Button>
         </Form>
+        
         </div>
 
         <div className="noAccount">
