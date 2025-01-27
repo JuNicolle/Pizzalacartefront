@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AuthService from "../Services/AuthService";
+import UserService from "../Services/UserService";
 
 const NavBar = () => {
   const { isAuthentified, setIsAuthentified } = useContext(AuthContext);
@@ -11,6 +12,20 @@ const NavBar = () => {
     setIsAuthentified(false);
     AuthService.logout();
   };
+
+  const [user, setUser] = useState({});
+  const fetchUser = async () => {
+    try {
+      const response = await UserService.getUser();
+      setUser(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <>

@@ -2,6 +2,7 @@ import HomePage from "../Pages/HomePage";
 import SignInPage from "../Pages/SignInPage";
 import LoginPage from "../Pages/LoginPage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthContext from "../Context/AuthContext";
@@ -12,6 +13,10 @@ import AccountPage from "../Pages/AccountPage";
 import RouteSecu from "../Components/RouteSecu";
 import ResetPasswordPage from "../Pages/ResetPasswordPage";
 import LocationPage from "../Pages/LocationPage";
+import { ToastContainer } from "react-toastify";
+import OrderRecapPage from "../Pages/OrderRecapPage";
+
+
 
 function App() {
   const [isAuthentified, setIsAuthentified] = useState(AuthService.isValid());
@@ -30,17 +35,33 @@ function App() {
               <Route path="/LoginPage" element={<LoginPage />} />
               <Route path="/SignInPage" element={<SignInPage />} />
               <Route path="/LocationPage" element={<LocationPage />} />
-              <Route path="/ResetPasswordPage" element={<ResetPasswordPage />} />
-
+              
               <Route element={<RouteSecu />}>
               <Route path="/AccountPage" element={<AccountPage />} />
+              <Route path="/OrderRecapPage" element={<OrderRecapPage />} />
+              <Route path="/ResetPasswordPage" element={<ResetPasswordPage />} />
               </Route>
               
             </Routes>
+
+            <ToastContainer
+position="bottom-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
+
             </CartProvider>
           </AuthContext.Provider>
         </BrowserRouter>
       </div>
+
     </>
   );
 }

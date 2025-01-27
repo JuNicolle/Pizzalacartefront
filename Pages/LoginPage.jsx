@@ -4,7 +4,8 @@ import UserService from "../Services/UserService";
 import axios from 'axios';
 import AuthContext from "../Context/AuthContext";
 import NavBar from "../Components/NavBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 
@@ -12,6 +13,8 @@ const LoginPage = () => {
 
     const [user, setUser] = useState({});
     const {isAuthentified, setIsAuthentified} = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,9 +28,11 @@ const LoginPage = () => {
             axios.defaults.headers['Authorization'] = `Bearer ${response.data.token}`;
             localStorage.setItem('token', response.data.token);
             setIsAuthentified(true);
-            console.log(response.data);
+            toast.success('Connexion réussie')
+            navigate("/");
         } catch (error) {
             console.error(error);
+            toast.error("Une erreur est survenue")
         }
     }
 

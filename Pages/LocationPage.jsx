@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar";
 import LocationService from "../Services/LocationService";
+import Cart from "../Components/Cart";
+
+import FooterPizz from "../Components/FooterPizz";
+
+
 const LocationPage = () => {
     const [locations, setLocations] = useState([]);
     const fetchLocations = async () => {
@@ -16,6 +21,8 @@ const LocationPage = () => {
         useEffect(() => {
             fetchLocations();
         },[]);
+
+        
   return (
     <>
       <div className="locationPage">
@@ -28,10 +35,11 @@ const LocationPage = () => {
                <li key={location.id_location}> {location.schedule} : {location.name} <br /> {location.address} </li> 
             ))}
           </div>
-          
+          <FooterPizz/> 
         </div>
         <div className="rightPart">
           <h2>Votre panier</h2>
+          <Cart/>
         </div>
       </div>
     </>

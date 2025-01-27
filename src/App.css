@@ -159,6 +159,9 @@ form {
 }
 
 .rightPart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 22vw;
   background-color: var(--red-color);
   position: fixed;
@@ -169,8 +172,9 @@ form {
   color: var(--white-color);
   font-family: "Kay Pho Du", serif;
   display: flex;
-  justify-content: center;
+
 }
+
 .leftPart.blurred {
   filter: blur(5px);
   pointer-events: none;
@@ -384,4 +388,39 @@ form {
 
 .inputAccount img{
   width: 2vw;
+}
+
+#footer{
+  display: flex;
+  justify-content: space-between;
+  width: 93vw;
+  padding-right: 30vw;
+  padding-left: 7vw;
+  height: 8vh;
+  align-items: center;
+  font-family: "Kay Pho Du", serif;
+  font-size: 2.5vh;
+  background: linear-gradient(#bebebe84, rgba(133, 129, 129, 0.675));
+}
+
+.orderRecapDiv{
+  height: 70vh;
+  display: flex;
+  padding-left: 2vw;
+  padding-top: 2vh;
+  background-color: var(--gray-color);
+  flex-direction: column;
+}
+
+.orderRecapDiv div{
+  border: 1px solid var(--text-color);
+  color:#c72d2d;
+  border-radius: 25px;
+  padding: 1rem;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  background-color: var(--background-color);
+  font-family: "Kay Pho Du", serif;
+
 }
