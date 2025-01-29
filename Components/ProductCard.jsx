@@ -12,6 +12,10 @@ const ProductCard = ({ ProductCard }) => {
 
   const createNewCart = async () => {
     try {
+      const token = localStorage.getItem('token');
+      console.log('Token disponible:', !!token);
+      console.log('Données envoyées:', { location_id: 1 });
+
       const response = await axios.post('http://localhost:3000/pizzalacarte/createOrder', {
         location_id: 1
       }, {
@@ -19,6 +23,8 @@ const ProductCard = ({ ProductCard }) => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
+
+      console.log('Réponse création commande:', response.data);
       return response.data.orderId;
     } catch (error) {
       console.error("Erreur création panier:", error);
@@ -30,13 +36,15 @@ const ProductCard = ({ ProductCard }) => {
     e.stopPropagation();
     try {
       let orderId = localStorage.getItem('orderId');
+      console.log('OrderId existant:', orderId);
       toast.success('Produit ajouté au panier', {
         autoClose: 900});
       
       if (!orderId) {
+        console.log('Création nouveau panier...');
         orderId = await createNewCart();
+        console.log('Nouveau orderId créé:', orderId);
         localStorage.setItem('orderId', orderId);
-        toast.success('Produit ajoutée au panier')
       }
 
       await addToCart(

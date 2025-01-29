@@ -15,6 +15,7 @@ import ResetPasswordPage from "../Pages/ResetPasswordPage";
 import LocationPage from "../Pages/LocationPage";
 import { ToastContainer } from "react-toastify";
 import OrderRecapPage from "../Pages/OrderRecapPage";
+import OrderConfirmationPage from "../Pages/OrderConfirmationPage";
 
 
 
@@ -39,6 +40,7 @@ function App() {
               <Route element={<RouteSecu />}>
               <Route path="/AccountPage" element={<AccountPage />} />
               <Route path="/OrderRecapPage" element={<OrderRecapPage />} />
+              <Route path="/confirmation" element={<OrderConfirmationPage />} />
               <Route path="/ResetPasswordPage" element={<ResetPasswordPage />} />
               </Route>
               

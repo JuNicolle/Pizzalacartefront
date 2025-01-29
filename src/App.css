@@ -72,6 +72,7 @@ form {
   height: 10vh;
   width: 26vw;
   border: 1px solid #d0c9c9;
+  cursor: pointer;
 }
 
 .navLinkGrey:hover,
@@ -87,6 +88,7 @@ form {
   height: 10vh;
   width: 26vw;
   border: 1px solid #d0c9c9;
+  cursor: pointer;
 }
 .navBarButton {
   text-decoration: none;
@@ -116,6 +118,7 @@ form {
   background-color: var(--gray-color);
   border: none;
   border-radius: 25px;
+  width: 23vw;
 }
 #loginButton:hover {
   background-color: var(--green-color);
@@ -124,7 +127,7 @@ form {
   font-family: "Kay Pho Du", serif;
   text-decoration: none;
   font-style: normal;
-  font-size: 2vh;
+  font-size: 3vh;
   color: var(--text-color);
 }
 #loginButton a:hover {
@@ -139,6 +142,7 @@ form {
   display: flex;
   gap: 10px;
   align-items: center;
+  cursor: pointer;
 }
 
 
@@ -222,6 +226,7 @@ form {
   gap: 3vw;
   background-color: var(--gray-color);
   padding-top: 4vh;
+  padding-bottom: 5vh;
 }
 
 .listLocations {
@@ -231,7 +236,7 @@ form {
   flex-wrap: wrap;
   gap: 2vh;
   background-color: var(--gray-color);
-  height: 100vh;
+  height: 70vh;
   padding-left: 5vw;
   padding-top: 4vh;
 }
@@ -239,16 +244,17 @@ form {
 .listLocations li {
   list-style: none;
   font-family: "Kay Pho Du", serif;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 .listLocations h2 {
   font-family: "Kay Pho Du", serif;
-  font-size: 8vh;
+  font-size: 7vh;
 }
 
 .card {
   border-radius: 25px;
+  height: min-content;
 }
 
 .productModal {
@@ -368,7 +374,7 @@ form {
   padding-left: 4vw;
   padding-top: 2vh;
   font-family: "Kay Pho Du", serif;
-  
+  font-size: 3.5vh;
 }
 
 .coordonnees{
@@ -423,4 +429,115 @@ form {
   background-color: var(--background-color);
   font-family: "Kay Pho Du", serif;
 
+}
+
+/* Page recapitulative de la commande en cours */
+
+.order-recap-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.order-recap-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.order-card {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.order-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.item-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.item-image {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: 600;
+}
+
+.item-quantity {
+  color: #4b5563;
+}
+
+.item-instructions {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.item-price {
+  font-weight: 600;
+  text-align: right;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid #e5e7eb;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.buttons-container {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.loading-message,
+.error-message,
+.empty-message {
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-message {
+  color: #dc2626;
+}
+
+/* ************************************************ */
+
+#orderConfirmationDiv{
+  height: 70vh;
+  padding-top: 10vh;
+  font-family: "Kay Pho Du", serif;
+}
+
+.formCategory{
+  width: 25vw;
 }

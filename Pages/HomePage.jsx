@@ -4,22 +4,34 @@ import ProductService from "../Services/ProductService";
 import ProductCard from "../Components/ProductCard";
 import Cart from "../Components/Cart";
 import FooterPizz from "../Components/FooterPizz";
+import FormCategory from "../Components/FormCategory";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(0);
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (categoryId) => {
     try {
-      const response = await ProductService.getAllProducts();
+      let response;
+      if (categoryId === 0) {
+        response = await ProductService.getAllProducts();
+      } else {
+        response = await ProductService.getProductsByCategory(categoryId);
+      }
       setProducts(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const handleCategoryChange = (categoryId) => {
+    setSelectedCategory(categoryId);
+    fetchProducts(categoryId);
+  };
+
   useEffect(() => {
-    fetchProducts();
-  }, []); // Chargement unique des produits au montage du composant
+    fetchProducts(0);
+  }, []);
 
   return (
     <div className="locationPage">
@@ -36,7 +48,13 @@ const HomePage = () => {
         </div>
 
         <div className="newIngredient">
-          <span>Nouvel ingrédient du moment : Pepperonni !</span>
+          <div >
+            <span>Nouvel ingrédient du moment : Pepperonni !</span>
+          </div>
+
+          <div>
+          <FormCategory onCategoryChange={handleCategoryChange} />
+          </div>
         </div>
 
         <div className="listItems">
@@ -44,7 +62,7 @@ const HomePage = () => {
             <ProductCard key={product.id_product} ProductCard={product} />
           ))}
         </div>
-        <FooterPizz/> 
+        <FooterPizz />
       </div>
 
       <div className="rightPart">
@@ -52,8 +70,6 @@ const HomePage = () => {
         <Cart />
       </div>
     </div>
-
-    
   );
 };
 

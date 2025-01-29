@@ -49,32 +49,48 @@ export function CartProvider({ children }) {
     };
 
     // Ajouter un produit au panier
-    const addToCart = async (orderId, productId, quantity, special_instructions) => {
-        try {
-            setLoading(true);
-            const response = await axios.post(
-                `${API_URL}/addOrderItem`,
-                {
-                    order_id: orderId,
-                    product_id: productId,
-                    quantity,
-                    special_instructions
-                },
-                getAuthHeaders()
-            );
-            setCart(response.data.cart);
-            return response.data;
-        } catch (error) {
-            setError(error.response?.data?.message || 'Erreur lors de l\'ajout au panier');
-            if (error.response?.status === 404) {
-                localStorage.removeItem('orderId');
-                setCart(null);
+        const addToCart = async (orderId, productId, quantity, special_instructions) => {
+            try {
+                setLoading(true);
+                const response = await axios.post(
+                    `${API_URL}/addOrderItem`,
+                    {
+                        order_id: orderId,
+                        product_id: productId,
+                        quantity,
+                        special_instructions
+                    },
+                    getAuthHeaders()
+                );
+                console.log("Items dans la réponse:", response.data.cart.items);
+    
+                if (response.data.cart && response.data.cart.items) {
+                    // Vérifions que chaque item a un id_order_item
+                    const itemsWithIds = response.data.cart.items.map(item => {
+                        console.log("Item dans le panier:", item);
+                        if (!item.id_order_item) {
+                            console.warn("Item sans id_order_item:", item);
+                        }
+                        return item;
+                    });
+    
+                setCart({
+                    ...response.data.cart,
+                    items: itemsWithIds
+                });
             }
-            throw error;
-        } finally {
-            setLoading(false);
-        }
-    };
+                return response.data;
+            } catch (error) {
+                setError(error.response?.data?.message || 'Erreur lors de l\'ajout au panier');
+                if (error.response?.status === 404) {
+                    localStorage.removeItem('orderId');
+                    setCart(null);
+                }
+                throw error;
+            } finally {
+                setLoading(false);
+            }
+        };
 
     // Supprimer un article du panier
     const removeItem = async (orderId, itemId) => {

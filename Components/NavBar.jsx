@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../Services/AuthService";
 import UserService from "../Services/UserService";
 
@@ -23,9 +23,8 @@ const NavBar = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+
+  const navigate=useNavigate();
 
   return (
     <>
@@ -33,10 +32,12 @@ const NavBar = () => {
     <div className="navBarBody">
       <Nav>
         <div className="navBarHeader">
-          <div className="logoTitle">
+        
+          <div className="logoTitle" onClick={() => navigate('/')}>
             <img src="src/assets/pizza.png"></img>
             <h2 id="titlePizz">Pizz'a La Carte</h2>
           </div>
+
           <div>
             <div>
             {isAuthentified == false ? <>
@@ -62,12 +63,12 @@ const NavBar = () => {
       </Nav>
 
       <Nav>
-        <div className="navLinkGrey">
+        <div className="navLinkGrey" onClick={() => navigate('/')}>
           <Link to={"/"} className="navBarButton">
             Nos Pizzas
           </Link>
         </div>
-        <div className="navLinkWhite">
+        <div className="navLinkWhite" onClick={() => navigate('/locationPage')}>
           <Link to={"/LocationPage"} className="navBarButton">
             Nos emplacements
           </Link>
