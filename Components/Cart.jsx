@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCart } from '../Context/CartContext';
 import { Button } from 'react-bootstrap';
 import { toast } from "react-toastify";
@@ -6,16 +6,36 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const { cart, removeItem } = useCart();
-    const orderId = localStorage.getItem('orderId');
     const [isRemoving, setIsRemoving] = useState(false);
+    // Utiliser un state pour l'orderId
+    const [orderId, setOrderId] = useState(localStorage.getItem('orderId'));
+
+    // Surveiller les changements d'orderId dans le localStorage
+    useEffect(() => {
+        const checkOrderId = () => {
+            const currentOrderId = localStorage.getItem('orderId');
+            setOrderId(currentOrderId);
+        };
+
+        // Vérifier au montage et à chaque fois que le localStorage change
+        window.addEventListener('storage', checkOrderId);
+        checkOrderId();
+
+        return () => {
+            window.removeEventListener('storage', checkOrderId);
+        };
+    }, []);
 
     const handleRemoveFromCart = async (id_order_item) => {
-        if (isRemoving) return; // Évite les suppressions multiples simultanées
+        if (isRemoving) return;
         
         try {
             setIsRemoving(true);
             
-            if (!orderId) {
+            // Récupérer l'orderId le plus récent
+            const currentOrderId = localStorage.getItem('orderId');
+            
+            if (!currentOrderId) {
                 console.error("Pas d'orderId trouvé");
                 toast.error('Erreur: impossible de supprimer le produit');
                 return;
@@ -27,8 +47,8 @@ const Cart = () => {
                 return;
             }
 
-            await removeItem(orderId, id_order_item);
-            toast.error('Produit retiré du panier', {
+            await removeItem(currentOrderId, id_order_item);
+            toast.success('Produit retiré du panier', {
                 autoClose: 800,
             });
             

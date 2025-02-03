@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import LoginPage from "../Pages/loginPage";
+import LoginPage from "../Pages/LoginPage";
 import { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 

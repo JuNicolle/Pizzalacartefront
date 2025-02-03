@@ -7,13 +7,14 @@ import UserService from "../Services/UserService";
 
 const NavBar = () => {
   const { isAuthentified, setIsAuthentified } = useContext(AuthContext);
+  const user = AuthService.getUser();
 
   const handleLogout = () => {
     setIsAuthentified(false);
     AuthService.logout();
   };
 
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const fetchUser = async () => {
     try {
       const response = await UserService.getUser();
@@ -37,6 +38,14 @@ const NavBar = () => {
             <img src="src/assets/pizza.png"></img>
             <h2 id="titlePizz">Pizz'a La Carte</h2>
           </div>
+
+          {user.role=="admin" ? (
+<>
+            <Button className="boutonAjoutActivite" size="lg" onClick={()=>handleEdit(activite.idActivite)}>ADMIN</Button>
+
+</>
+):(<></>)}
+
 
           <div>
             <div>

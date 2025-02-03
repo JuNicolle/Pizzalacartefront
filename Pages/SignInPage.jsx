@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import UserService from '../Services/UserService';
 import NavBar from '../Components/NavBar';
+import { toast } from "react-toastify";
 
 const SignInPage = () => {
 
@@ -25,6 +26,8 @@ const SignInPage = () => {
         try {
             const response = await UserService.addUser(user);    
             console.log(response);
+            toast.success('Compte créé avec succés', {
+              autoClose: 900});
         }
         catch (error) {
             console.error(error);
@@ -83,8 +86,8 @@ const SignInPage = () => {
         <Form.Control type="tel" placeholder="Entrez votre numéro de telephone" name='phone' value={user.phone} onChange={handleChange} required={true}/>
       </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
+      <Button variant="success" type="submit">
+        S'inscrire
       </Button>
     </Form>
     </div>

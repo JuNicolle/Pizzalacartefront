@@ -31,7 +31,7 @@ const LoginPage = () => {
             toast.success('Connexion réussie')
             navigate("/");
         } catch (error) {
-            console.error(error);
+            console.error("Erreur détaillée:", error.response?.data);
             toast.error("Une erreur est survenue")
         }
     }
@@ -66,7 +66,12 @@ const LoginPage = () => {
         <div className="noAccount">
             <img src="/src/assets/pizza.png" alt="" />
             <Link to={"/SignInPage"}><Button variant="success" href="/register">Pas encore de compte ? Inscrivez vous !</Button></Link>
-            <Link to={"/ResetPasswordPage"}><Button variant="danger" href="/register">Mot de passe oublié ?</Button></Link>
+            {/* <Link to={"/ResetPasswordPage"}><Button variant="danger" href="/register">Mot de passe oublié ?</Button></Link> */}
+            <Button variant="secondary" className="buttonMdp">
+            <Link to={"/ResetPasswordPage"}>
+              Reinitialiser mon mot de passe{" "}
+            </Link>
+          </Button>
         </div>
         </div>
     </div>

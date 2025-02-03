@@ -22,6 +22,7 @@ function getUser(){
         return {
             id : decodedToken.id,
             email : decodedToken.email,
+            role : decodedToken.role
         }
     } else {
         return {}

@@ -541,3 +541,8 @@ form {
 .formCategory{
   width: 25vw;
 }
+
+.adminButtons{
+  display: flex;
+  gap : 3vw;
+}
