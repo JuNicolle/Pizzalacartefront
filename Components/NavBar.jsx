@@ -41,7 +41,9 @@ const NavBar = () => {
 
           {user.role=="admin" ? (
 <>
-            <Button className="boutonAjoutActivite" size="lg" onClick={()=>handleEdit(activite.idActivite)}>ADMIN</Button>
+            <Button className="adminButton" size="lg">
+              <Link to={"/AdminPage"}>ADMIN</Link>
+              </Button>
 
 </>
 ):(<></>)}

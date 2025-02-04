@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+axios.defaults.headers.post['Content-Type']="application/json"
+
 function addUser(user) {
     return axios.post('http://localhost:3000/pizzalacarte/createUser', user);
 }
@@ -38,10 +40,20 @@ function logoutUser() {
     localStorage.removeItem('orderId');
 }
 
+function SendCode(data){
+    return axios.post('http://localhost:3000/pizzalacarte/sendCode/',data)
+}
+
+function ResetPassword(data){
+    return axios.post('http://localhost:3000/pizzalacarte/resetPassword/',data)
+}
+
 export default {
     addUser,
     loginUser,
     getUser,
     updateUser,
-    logoutUser
+    logoutUser,
+    SendCode,
+    ResetPassword
 };

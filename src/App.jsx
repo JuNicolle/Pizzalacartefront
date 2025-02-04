@@ -11,7 +11,6 @@ import { useState, useEffect } from "react"; // Ajout de useEffect
 import AuthService from "../Services/AuthService";
 import AccountPage from "../Pages/AccountPage";
 import RouteSecu from "../Components/RouteSecu";
-import ResetPasswordPage from "../Pages/ResetPasswordPage";
 import LocationPage from "../Pages/LocationPage";
 import { ToastContainer } from "react-toastify";
 import OrderRecapPage from "../Pages/OrderRecapPage";
@@ -21,6 +20,9 @@ import AdminOrderPage from "../Pages/AdminOrderPage";
 import AdminUserPage from "../Pages/AdminUserPage";
 import AdminLocationPage from "../Pages/AdminLocationPage";
 import AdminPizzaPage from "../Pages/AdminPizzaPage";
+import AdminPage from "../Pages/AdminPage";
+import SendCodePage from "../Pages/SendCodePage";
+import ResetPasswordPage from "../Pages/ResetPasswordPage";
 
 function App() {
   const [isAuthentified, setIsAuthentified] = useState(AuthService.isValid());
@@ -47,17 +49,21 @@ function App() {
                 <Route path="/LoginPage" element={<LoginPage />} />
                 <Route path="/SignInPage" element={<SignInPage />} />
                 <Route path="/LocationPage" element={<LocationPage />} />
+                <Route path="/SendCodePage" element={<SendCodePage />} />
                 <Route path="/ResetPasswordPage" element={<ResetPasswordPage />} />
+                
                 <Route element={<RouteSecu />}>
                   <Route path="/AccountPage" element={<AccountPage />} />
                   <Route path="/OrderRecapPage" element={<OrderRecapPage />} />
                   <Route path="/confirmation" element={<OrderConfirmationPage />} />
+                  
                 </Route>
                 <Route>
-                  <Route path="AdminOrderPage" element={<AdminOrderPage/>}/>
-                  <Route path="AdminUserPage" element={<AdminUserPage/>}/>
-                  <Route path="AdminLocationPage" element={<AdminLocationPage/>}/>
-                  <Route path="AdminPizzaPage" element={<AdminPizzaPage/>}/>
+                  <Route path="/AdminPage" element={<AdminPage/>}/>
+                  <Route path="/AdminOrderPage" element={<AdminOrderPage/>}/>
+                  <Route path="/AdminUserPage" element={<AdminUserPage/>}/>
+                  <Route path="/AdminLocationPage" element={<AdminLocationPage/>}/>
+                  <Route path="/AdminPizzaPage" element={<AdminPizzaPage/>}/>
                 </Route>
               </Routes>
 

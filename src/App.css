@@ -542,7 +542,46 @@ form {
   width: 25vw;
 }
 
-.adminButtons{
+.adminButtonsCat{
   display: flex;
   gap : 3vw;
+  padding-bottom: 3vh;
+}
+
+.adminButtons{
+  height: 6vh;
+  
+}
+
+.adminButtons a{
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.adminButton{
+  background-color:#9c42ba;
+  border: none;
+}
+
+.adminButton:hover{
+  background-color:#501464;
+}
+
+.adminButton:active{
+  background-color:#501464 !important;
+}
+
+.adminButton{
+  background-color:#9c42ba;
+  border: none;
+}
+
+.adminButton a{
+  color: whitesmoke;
+  text-decoration: none;
+  font-family: "Kay Pho Du", serif;
+}
+
+.adminPanelCard img{
+  height: 18rem;
 }

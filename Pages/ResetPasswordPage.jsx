@@ -1,70 +1,110 @@
-import { useContext, useState } from "react";
+import { useState, useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import UserService from "../Services/UserService";
-import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../Context/AuthContext";
-import NavBar from "../Components/NavBar";
-import { Link } from "react-router-dom";
-
-
 
 const ResetPasswordPage = () => {
+    const {user} = useContext(AuthContext);
+    const [formData, setFormData] = useState({
+        email: user?.email || "", 
+        token: "",
+        newPassword: "",
+        confirmPassword: ""
+    });
 
-    const [user, setUser] = useState({});
-    const {isAuthentified, setIsAuthentified} = useContext(AuthContext);
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUser({ ...user, [name]: value });
-    }
-
+        setFormData({ ...formData, [name]: value });
+    };
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await UserService.loginUser(user);
-            axios.defaults.headers['Authorization'] = `Bearer ${response.data.token}`;
-            localStorage.setItem('token', response.data.token);
-            setIsAuthentified(true);
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
+        setError("");
+        setSuccess(false);
+    
+        if (formData.newPassword !== formData.confirmPassword) {
+            setError("Les mots de passe ne correspondent pas.");
+            return;
         }
-    }
+    
+        try {
+            console.log("Données envoyées au serveur :", JSON.stringify(formData, null, 2)); // Log détaillé
+            const response = await UserService.ResetPassword(formData);
+            console.log("Réponse API :", response.data);
+    
+            setSuccess(true);
+            setTimeout(() => navigate("/loginPage"), 2000);
+        } catch (error) {
+            console.error("Erreur Axios :", error.response ? error.response.data : error.message);
+            setError(error.response?.data?.message || "Échec de la réinitialisation.");
+        }
+    };    
+    
+    
+    return (
+        <>
+            <h2>Réinitialisation du mot de passe</h2>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            {success && <p style={{ color: "green" }}>Mot de passe modifié avec succès ! Redirection...</p>}
 
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                    <Form.Label>Adresse mail</Form.Label>
+                    <Form.Control
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
 
-    return <>
+                <Form.Group className="mb-3">
+                    <Form.Label>Code reçu par email</Form.Label>
+                    <Form.Control
+                        name="token"
+                        type="text"
+                        placeholder="Entrez le code"
+                        required
+                        value={formData.token}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
 
-<div className="locationPage">
-    <div className="leftPart">
-        <NavBar />
-        <div className="bodyLogin">
-        <div className="loginForm">
-        <Form onSubmit={handleSubmit} className="form">
-            <Form.Group className="mb-3 col-9" >
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Entrez votre email" name='email' value={user.email} onChange={handleChange} required />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Nouveau mot de passe</Form.Label>
+                    <Form.Control
+                        name="newPassword"
+                        type="password"
+                        placeholder="Nouveau mot de passe"
+                        required
+                        value={formData.newPassword}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
 
-           
-            <Button variant="primary" type="submit">
-                Envoyez moi un nouveau mot de passe
-            </Button>
-        </Form>
-        </div>
+                <Form.Group className="mb-3">
+                    <Form.Label>Confirmer le mot de passe</Form.Label>
+                    <Form.Control
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Confirmez le mot de passe"
+                        required
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
 
-        
-        </div>
-    </div>
-    <div className="rightPart">
-    <h2>Votre panier</h2>
-    </div>
-
-    </div>
-        
-
-
-
-    </>;
-}
-
+                <Button variant="outline-dark" type="submit">
+                    Réinitialiser le mot de passe
+                </Button>
+            </Form>
+        </>
+    );
+};
+ 
 export default ResetPasswordPage;

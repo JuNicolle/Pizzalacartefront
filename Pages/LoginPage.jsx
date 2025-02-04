@@ -68,7 +68,7 @@ const LoginPage = () => {
             <Link to={"/SignInPage"}><Button variant="success" href="/register">Pas encore de compte ? Inscrivez vous !</Button></Link>
             {/* <Link to={"/ResetPasswordPage"}><Button variant="danger" href="/register">Mot de passe oublié ?</Button></Link> */}
             <Button variant="secondary" className="buttonMdp">
-            <Link to={"/ResetPasswordPage"}>
+            <Link to={"/SendCodePage"}>
               Reinitialiser mon mot de passe{" "}
             </Link>
           </Button>

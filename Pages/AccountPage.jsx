@@ -102,7 +102,7 @@ const AccountPage = () => {
               {/* remplie tempUser avec les valeurs actuelles avant d'ouvrir l'input */}
               <div className="inputAccount">
                 <div>
-                  <p>Nom: {user.name}</p>
+                  <p>Nom : {user.name}</p>
                 </div>
                 <div>
                   <Button
@@ -143,7 +143,7 @@ const AccountPage = () => {
               {/* remplie tempUser avec les valeurs actuelles avant d'ouvrir l'input */}
               <div className="inputAccount">
                 <div>
-                  <p>Nom: {user.first_name}</p>
+                  <p>Prénom : {user.first_name}</p>
                 </div>
                 <div>
                   <Button
@@ -184,7 +184,7 @@ const AccountPage = () => {
               {/* remplie tempUser avec les valeurs actuelles avant d'ouvrir l'input */}
               <div className="inputAccount">
                 <div>
-                  <p>Nom: {user.email}</p>
+                  <p>Email : {user.email}</p>
                 </div>
                 <div>
                   <Button
@@ -204,7 +204,7 @@ const AccountPage = () => {
           <p>
             Mot de passe :{" "}
             <Button variant="secondary" className="buttonMdp">
-              <Link to={"/ResetPasswordPage"}>
+              <Link to={"/SendCodePage"}>
                 Reinitialiser mon mot de passe{" "}
               </Link>
             </Button>
@@ -257,14 +257,17 @@ const AccountPage = () => {
                 </p>
               </div>
               <div>
+                <Button
+                variant="light"
+                onClick={() => {
+                  setAddressUpdate(true);
+                  setTempUser(user);
+                }}>
                 <img
                   src="src/assets/stylo.png"
                   alt="modify"
-                  onClick={() => {
-                    setAddressUpdate(true);
-                    setTempUser(user);
-                  }}
                 />
+                </Button>
               </div>
             </div>
           )}
@@ -293,7 +296,7 @@ const AccountPage = () => {
               {/* remplie tempUser avec les valeurs actuelles avant d'ouvrir l'input */}
               <div className="inputAccount">
                 <div>
-                  <p>Nom: {user.phone}</p>
+                  <p>Tel : {user.phone}</p>
                 </div>
                 <div>
                   <Button
@@ -310,12 +313,18 @@ const AccountPage = () => {
             </>
           )}
 
-          <div className="adminButtons">
-            <div>
+          <div >
+            <div className="adminButtonsCat">
               {user.role == "admin" ? (
                 <>
-                  <Button size="lg" variant="success">
-                    GESTION PIZZAS
+                  <Button size="lg"  className="adminButtons">
+                    <Link to={"/AdminPizzaPage"} >GESTION PIZZAS</Link>
+                  </Button>
+                  <Button size="lg" className="adminButtons">
+                    <Link to={"/AdminUserPage"} >GESTION USERS</Link>
+                  </Button>
+                  <Button size="lg" className="adminButtons">
+                    <Link to={"/AdminLocationPage"} >GESTION EMPLACEMENTS</Link>
                   </Button>
                 </>
               ) : (
@@ -323,27 +332,19 @@ const AccountPage = () => {
               )}
             </div>
 
-            <div>
-              {user.role == "admin" ? (
+            <div className="viewOrderButton">
+            {user.role == "admin" ? (
                 <>
-                  <Button size="lg">GESTION UTILISATEURS</Button>
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
-
-            <div>
-              {user.role == "admin" ? (
-                <>
-                  <Button size="lg" variant="danger">
-                    GESTION EMPLACEMENTS
+                  <Button variant="danger"className="adminButtons">
+                  <Link to={"/AdminOrderPage"} >GESTION COMMANDES</Link>
                   </Button>
                 </>
               ) : (
                 <></>
               )}
             </div>
+
+           
 
             {user.role == "client" ? (
               <>
@@ -356,7 +357,7 @@ const AccountPage = () => {
         </div>
 
         <div className="rightPart">
-          <h2>Votre panier</h2>
+          <h2>Votre Panier</h2>
         </div>
       </div>
     </>
