@@ -48,7 +48,7 @@ const Cart = () => {
             }
 
             await removeItem(currentOrderId, id_order_item);
-            toast.success('Produit retiré du panier', {
+            toast.error('Produit retiré du panier', {
                 autoClose: 800,
             });
             

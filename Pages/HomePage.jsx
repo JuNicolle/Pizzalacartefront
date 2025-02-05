@@ -34,7 +34,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="locationPage">
+    <div>
       <div className="leftPart">
         <NavBar />
 

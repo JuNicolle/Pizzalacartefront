@@ -1,14 +1,33 @@
 import axios from "axios";
 
+const BASE_URL = 'http://localhost:3000/pizzalacarte';
+
 function GetAllLocations() {
-    return axios.get('http://localhost:3000/pizzalacarte/getAllLocations');
+    return axios.get(`${BASE_URL}/getAllLocations`);
 }
 
 function GetLocationById(id) {
-    return axios.get(`http://localhost:3000/pizzalacarte/getLocation/` + id);
+    return axios.get(`${BASE_URL}/getLocation/${id}`);
 }
 
-export default {
-    GetAllLocations,
-    GetLocationById
+function CreateLocation(locationData) {
+    return axios.post(`${BASE_URL}/createLocation`, locationData);
 }
+
+function UpdateLocation(id, locationData) {
+    return axios.put(`${BASE_URL}/updateLocation/${id}`, locationData);
+}
+
+function DeleteLocation(id) {
+    return axios.delete(`${BASE_URL}/deleteLocation/${id}`);
+}
+
+export const LocationService = {
+    GetAllLocations,
+    GetLocationById,
+    CreateLocation,
+    UpdateLocation,
+    DeleteLocation
+}
+
+export default LocationService;

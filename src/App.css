@@ -151,15 +151,11 @@ form {
   flex-basis: auto;
 }
 
-.locationPage {
-  display: flex;
-  min-height: 100%;
-  position: relative;
-}
 
 .leftPart {
   width: 78vw;
   min-height: 100%;
+  position: relative;
 }
 
 .rightPart {
@@ -407,6 +403,7 @@ form {
   font-family: "Kay Pho Du", serif;
   font-size: 2.5vh;
   background: linear-gradient(#bebebe84, rgba(133, 129, 129, 0.675));
+
 }
 
 .orderRecapDiv{
@@ -582,6 +579,58 @@ form {
   font-family: "Kay Pho Du", serif;
 }
 
-.adminPanelCard img{
+.adminCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Kay Pho Du", serif;
+  background-color: var(--gray-color);
+  padding: 20px;
+  border-radius: 25px;
+  margin-top: 3vh;
+}
+
+.adminCard img{
   height: 18rem;
+  width: 18rem;
+  border-radius: 25px;
+}
+
+.adminPanel{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:4vw;
+  margin-bottom: 3vh;
+}
+
+.adminPanel a{
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.adminFooter{
+  position: fixed;
+  bottom:0;
+}
+
+.adminForm{
+  display: flex;
+  gap:2vw;
+  flex-direction: column;
+  margin-bottom: 2vh;
+  padding-left: 4vw;
+}
+
+.adminFormContainer{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2vh;
+  font-family: "Kay Pho Du", serif;
+}
+
+.tdButtons{
+  display: flex;
+  gap: 1vw;
 }
