@@ -346,6 +346,10 @@ form {
   height:27rem;
 }
 
+.card img{
+  height: 50%;
+}
+
 .buttonOnline{
   display: flex;
   gap:10px;

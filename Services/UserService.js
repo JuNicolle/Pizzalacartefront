@@ -28,6 +28,10 @@ function getUser(){
     return axios.get('http://localhost:3000/pizzalacarte/me');
 }
 
+function getAllUsers(){
+    return axios.get('http://localhost:3000/pizzalacarte/readUsers');
+}
+
 function updateUser(id, user){
     const userId = localStorage.getItem('userId'); 
     return axios.post(`http://localhost:3000/pizzalacarte/updateUser/`+ id, user);
@@ -48,12 +52,18 @@ function ResetPassword(data){
     return axios.post('http://localhost:3000/pizzalacarte/resetPassword/',data)
 }
 
+function deleteUser(id) {
+    return axios.delete(`http://localhost:3000/pizzalacarte/deleteUser/${id}`);
+}
+
 export default {
     addUser,
     loginUser,
     getUser,
+    getAllUsers,
     updateUser,
     logoutUser,
     SendCode,
-    ResetPassword
+    ResetPassword,
+    deleteUser
 };

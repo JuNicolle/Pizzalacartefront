@@ -4,12 +4,15 @@ import NavBar from "../Components/NavBar";
 import FooterPizz from "../Components/FooterPizz";
 import Cart from "../Components/Cart";
 import { Button, ButtonGroup } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 
 const AdminLocations = () => {
+    const {id} = useParams();
     const [locations, setLocations] = useState([]);
     const [form, setForm] = useState({ name: "", address: "", schedule: "" });
     const [editingId, setEditingId] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchLocations();
@@ -44,19 +47,17 @@ const AdminLocations = () => {
         }
     };
 
-    const handleEdit = (location) => {
-        setForm(location);
-        setEditingId(location.id_location);
-    };
-
-    const handleDelete = async (id) => {
-        if (window.confirm("Voulez-vous vraiment supprimer cet emplacement ?")) {
-            try {
-                await LocationService.DeleteLocation(id);
+    const handleDelete = async (location) => {
+        try {
+            // Optionnel : Ajouter une confirmation avant la suppression
+            if (window.confirm("Êtes-vous sûr de vouloir supprimer cet emplacement ?")) {
+                await LocationService.DeleteLocation(location.id_location);
+                // Rafraîchir la liste après la suppression
                 fetchLocations();
-            } catch (error) {
-                console.error("Erreur lors de la suppression", error);
             }
+        } catch (error) {
+            console.error("Erreur lors de la suppression", error);
+            setError("Erreur lors de la suppression de l'emplacement");
         }
     };
 
@@ -92,7 +93,7 @@ const AdminLocations = () => {
                             <td>{location.address}</td>
                             <td className="tdButtons">
                                 <Button onClick={() => handleEdit(location)} variant="warning">Modifier</Button>
-                                <Button onClick={() => handleEdit(location)} variant="danger">Supprimer</Button>
+                                <Button onClick={() => handleDelete(location)} variant="danger">Supprimer</Button>
                             </td>
                         </tr>
                     ))}
