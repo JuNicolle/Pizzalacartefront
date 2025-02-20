@@ -12,6 +12,7 @@ function FormCategory({ onCategoryChange }) {
         <option value="0">Toutes les catégories</option>
         <option value="1">Pizzas base tomate</option>
         <option value="2">Pizzas base crême</option>
+        <option value="5">Pizzas du moment</option>
         <option value="3">Boissons</option>
         <option value="4">Desserts</option>
       </Form.Select>
