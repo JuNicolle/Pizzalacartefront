@@ -11,12 +11,22 @@ function getProductsByCategory(categoryId) {
     return axios.get(`${API_URL}/readProductsByCategory/${categoryId}`);
 }
 
+function createProduct(productData){
+    return axios.post(`${API_URL}/createProduct`, productData);
+}
+
 function deleteProduct(id){
     return axios.delete(`${API_URL}/deleteProduct/${id}`)
+}
+
+function updateProduct(id, productData){
+    return axios.post(`${API_URL}/updateProduct/${id}`, productData)
 }
 
 export default {
     getAllProducts,
     getProductsByCategory,
-    deleteProduct
-};
+    deleteProduct,
+    updateProduct,
+    createProduct
+}

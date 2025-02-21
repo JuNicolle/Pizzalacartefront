@@ -3,7 +3,7 @@ import LocationService from "../Services/LocationService";
 import NavBar from "../Components/NavBar";
 import FooterPizz from "../Components/FooterPizz";
 import Cart from "../Components/Cart";
-import { Button, ButtonGroup } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 

@@ -634,7 +634,42 @@ form {
   font-family: "Kay Pho Du", serif;
 }
 
+
+
+.adminFormPizza{
+  display: flex;
+  flex-direction: column;
+}
+
+.pizzaFormDiv{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
+}
+
+td, th{
+  border: 1px solid var(--gray-color);
+  padding: 10px;
+}
+
+tr:hover{
+  background-color: var(--gray-color);
+}
+
 .tdButtons{
   display: flex;
-  gap: 1vw;
+  border : none;
+  gap:5px;
 }
+
+.commandPanelPizza{
+  display: flex;
+  gap: 4vw;
+  padding-left: 3vw;
+}
+
+.table{
+  margin-left : 2vw;
+  width: 75vw;
+}
+
