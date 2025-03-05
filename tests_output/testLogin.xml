@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="0">
+
+  <testsuite name="testLogin"
+    errors="1" failures="0" hostname="" id="" package="testLogin" skipped="3"
+    tests="0" time="0.001000" timestamp="">
+  
+
+  
+    <system-err>
+       An error occurred while creating a new SafariDriver session: [Error] Server terminated early with status 1
+  Verify if SafariDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/safaridriver&#39;,
+     port: undefined,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  More info might be available in the log file: /Users/juliennicolle/ForEachAcademy/projetsPersos/PIZZALACARTE/Pizzalacarte_front/logs/testLogin_safaridriver.log
+    </system-err>
+  
+
+    
+    <error message="An error occurred while creating a new SafariDriver session: [Error] Server terminated early with status 1"><![CDATA[
+      Error: An error occurred while creating a new SafariDriver session: [Error] Server terminated early with status 1
+    at /Users/juliennicolle/ForEachAcademy/projetsPersos/PIZZALACARTE/Pizzalacarte_front/node_modules/selenium-webdriver/remote/index.js:256:70
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      ]]></error>  
+
+  
+    
+    <testcase
+      name="Connexion et accès à la page compte" classname="testLogin">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Tentative de connexion avec informations invalides" classname="testLogin">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Tentative d&#39;accès non autorisé à la page compte" classname="testLogin">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

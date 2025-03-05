@@ -91,6 +91,7 @@ const AdminPizzaPage = () => {
       availability: product.availability,
     });
   };
+  
   const handleCategoryChange = (categoryId) => {
     setSelectedCategory(categoryId);
     fetchProducts(categoryId);
@@ -118,7 +119,7 @@ const AdminPizzaPage = () => {
 
             <div className="commandPanelPizza">
               <Button variant="danger" className="mb-3">
-              <Link to={"/"}>Retour</Link>
+              <Link to={"/AdminPage"}>Retour</Link>
               </Button>
 
               <Button

@@ -40,7 +40,8 @@ const AdminPage = () => {
           </div>
         </div>
         
-        <FooterPizz />
+        <div className="adminFooter">
+        <FooterPizz /></div>
         
       </div>
       <div className="rightPart">

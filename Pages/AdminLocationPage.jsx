@@ -4,7 +4,7 @@ import NavBar from "../Components/NavBar";
 import FooterPizz from "../Components/FooterPizz";
 import Cart from "../Components/Cart";
 import { Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 const AdminLocations = () => {
@@ -13,6 +13,8 @@ const AdminLocations = () => {
     const [form, setForm] = useState({ name: "", address: "", schedule: "" });
     const [editingId, setEditingId] = useState(null);
     const [error, setError] = useState(null);
+    const [showForm, setShowForm] = useState(false);
+    
 
     useEffect(() => {
         fetchLocations();
@@ -47,6 +49,18 @@ const AdminLocations = () => {
         }
     };
 
+    const handleEdit = (location) => {
+        // On peut d'abord console.log pour voir la structure exacte
+    
+        setEditingId(location.id_location);
+        setShowForm(true);
+        setForm({
+          name: location.name,
+          address: location.address,
+          schedule: location.schedule,
+        });
+      };
+
     const handleDelete = async (location) => {
         try {
             // Optionnel : Ajouter une confirmation avant la suppression
@@ -65,15 +79,31 @@ const AdminLocations = () => {
         <div>
             <div className="leftPart">
                 <NavBar/>
-            
+           
             <div className="adminFormContainer">
+            
             <h2>Gestion des Emplacements</h2>
+            <div className="commandPanelPizza">
+              <Button variant="danger" className="mb-3">
+              <Link to={"/AdminPage"}>Retour</Link>
+              </Button>
+             
+              <Button
+                variant="primary"
+                onClick={() => setShowForm(!showForm)}
+                className="mb-3"
+              >
+                {showForm ? "Fermer le formulaire" : "Ajouter un produit"}
+              </Button> 
+              </div>
+            {showForm && (
             <form onSubmit={handleSubmit} className="adminForm">
                 <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Nom" required />
                 <input type="text" name="address" value={form.address} onChange={handleChange} placeholder="Adresse" required />
                 <input type="text" name="schedule" value={form.schedule} onChange={handleChange} placeholder="Horaires" required />
                 <button type="submit">{editingId ? "Mettre à jour" : "Ajouter"}</button>
             </form>
+            )}
             </div>
             <div className="adminForm">
             <table>

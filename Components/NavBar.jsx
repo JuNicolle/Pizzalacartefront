@@ -41,9 +41,9 @@ const NavBar = () => {
 
           {user.role=="admin" ? (
 <>
-            <Button className="adminButton" size="lg">
-              <Link to={"/AdminPage"}>ADMIN</Link>
-              </Button>
+            
+              <Link to={"/AdminPage"}><Button className="adminButton" size="lg">ADMIN</Button></Link>
+              
 
 </>
 ):(<></>)}
@@ -52,14 +52,14 @@ const NavBar = () => {
           <div>
             <div>
             {isAuthentified == false ? <>
-              <Button id="loginButton">
-                <Link to={"/LoginPage"}>Se connecter / S'inscrire</Link>
+              <Button id="loginButton" name="loginlink">
+                <Link to={"/LoginPage"} >Se connecter / S'inscrire</Link>
               </Button>
               </> : <>
               <div className="buttonOnline">
                 <div className="buttonCo">
-              <Button variant="success">
-                <Link to={"/AccountPage"}>Mon compte</Link>
+              <Button variant="success" className="myAccount">
+                <Link to={"/AccountPage"} className="myAccount">Mon compte</Link>
               </Button>
               </div>
               <Button variant="danger">

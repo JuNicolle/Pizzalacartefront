@@ -673,3 +673,8 @@ tr:hover{
   width: 75vw;
 }
 
+.commandPanelPizza a{
+  text-decoration: none;
+  color: white;
+}
+
