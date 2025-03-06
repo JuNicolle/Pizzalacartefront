@@ -240,7 +240,7 @@ form {
 .listLocations li {
   list-style: none;
   font-family: "Kay Pho Du", serif;
-  font-size: 3vh;
+  font-size: 2.4vh;
 }
 
 .listLocations h2 {
@@ -677,4 +677,263 @@ tr:hover{
   text-decoration: none;
   color: white;
 }
+
+
+  @media screen and (max-width: 767px) {
+    /* Layout général */
+    .leftPart {
+      width: 100vw;
+
+      overflow-x: hidden;
+    }
+  
+    .rightPart {
+      display: none;
+    }
+    
+    /* Navbar */
+    .navBarHeader {
+      width: 100vw;
+      padding: 0 15px;
+      height: auto;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: var(--red-color);
+    }
+    
+    .navBarHeader img {
+      width: 30px;
+    }
+    
+    #titlePizz {
+      font-size: 24px;
+      color: whitesmoke;
+    }
+    
+    .nav {
+      display: flex;
+
+      height: fit-content;
+      width: 100%;
+    }
+
+    .navBar {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 0;
+    }
+    
+    
+    
+    .navLinkGrey, .navLinkWhite {
+      height: 8vh;
+      width: 50%;
+      font-size: 20px;
+    }
+
+    .navLinkGrey a, .navLinkWhite a {
+      font-size: 20px;
+    }
+
+    .navLinkGreyPhone{
+      height: 8vh;
+      width: 75%;
+      font-size: 20px;
+      background-color: var(--green-color);
+    }
+
+    .navLinkGreyPhone a{
+      color: whitesmoke;
+    }
+
+    .phoneCart{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 8vh;
+      width: 25%;
+      font-size: 20px;
+      border: 1px solid #d0c9c9;
+    }
+
+    .phoneCart img{
+      width: 35px;
+    }
+    
+    .navBarButton {
+      font-size: 14px;
+      text-align: center;
+    }
+    
+    #loginButton {
+      width: auto;
+      padding: 5px 15px;
+      background-color: var(--red-color)
+    }
+    
+    #loginButton a {
+      font-size: 14px;
+      color: whitesmoke;
+    }
+  
+    /* Page d'accueil */
+    .homePageInfos {
+      flex-direction: column;
+      height: auto;
+      padding: 10px;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    
+    #pizzaOfTheMonth {
+      width: 100%;
+      border-radius: 15px;
+      padding: 15px;
+      height: 6vh;
+      display: none;
+    }
+    
+    #pizzaOfTheMonth h2 {
+      width: 100%;
+      font-size: 18px;
+    }
+    
+    .homePageInfos h3 {
+      width: 100%;
+      font-size: 16px;
+      display: flex;
+    }
+    
+    .newIngredient {
+      padding: 15px;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .formCategory {
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    /* Liste des produits */
+    .listItems {
+      gap: 15px;
+      padding: 15px;
+    }
+    
+    .card {
+      width: 100% !important;
+      height: auto !important;
+      margin-bottom: 15px;
+    }
+    
+    /* Modal produit */
+    .productModal {
+      width: 90vw;
+      padding: 15px;
+    }
+  
+    /* Footer */
+    #footer {
+      width: 100vw;
+      padding: 5px;
+      font-size: 12px;
+      flex-direction: column;
+      gap: 5px;
+
+    }
+  
+    /* Page Emplacements */
+    .listLocations {
+ 
+      padding: 15px;
+
+    }
+    
+ 
+    .listLocations h2 {
+      font-size: 24px;
+    }
+    
+    .listLocations li {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  
+    /* Page de connexion */
+    .bodyLogin {
+      flex-direction: column;
+      padding: 15px;
+      gap: 20px;
+      align-items: center;
+    }
+    
+    .loginForm {
+      width: 100%;
+    }
+    
+    .noAccount {
+      width: 100%;
+    }
+    
+    /* Formulaires */
+    .form-container {
+      padding: 15px;
+    }
+    
+    form {
+      padding: 15px;
+    }
+    
+    /* Tableaux */
+    .table {
+      width: 100%;
+      margin-left: 0;
+      overflow-x: auto;
+      display: block;
+    }
+    
+    /* Commandes et Récapitulatifs */
+    .orderRecapDiv div {
+      width: 90%;
+    }
+    
+    .order-recap-container {
+      padding: 15px;
+    }
+    
+    .item-content {
+      flex-direction: column;
+    }
+    
+    .buttons-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    /* Admin */
+    .adminPanel {
+      gap: 15px;
+    }
+    
+    .adminCard img {
+      height: auto;
+      width: 100%;
+      max-width: 250px;
+    }
+    
+    .adminForm {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    
+    .commandPanelPizza {
+      flex-direction: column;
+      gap: 10px;
+      padding-left: 15px;
+    }
+ }
 

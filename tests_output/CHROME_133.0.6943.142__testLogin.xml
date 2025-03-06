@@ -5,9 +5,9 @@
 
   <testsuite name="testLogin"
     errors="0" failures="0" hostname="" id="" package="testLogin" skipped="0"
-    tests="3" time="27.27" timestamp="">
+    tests="3" time="27.00" timestamp="">
   
-    <testcase name="Connexion et accès à la page compte" classname="testLogin" time="7.528" assertions="20">
+    <testcase name="Connexion et accès à la page compte" classname="testLogin" time="7.559" assertions="20">
 
     
 
@@ -50,7 +50,7 @@
     
     </testcase>
   
-    <testcase name="Tentative de connexion avec informations invalides" classname="testLogin" time="3.230" assertions="4">
+    <testcase name="Tentative de connexion avec informations invalides" classname="testLogin" time="3.240" assertions="4">
 
     
 
@@ -61,7 +61,7 @@
     
     </testcase>
   
-    <testcase name="Tentative d&#39;accès non autorisé à la page compte" classname="testLogin" time="2.877" assertions="2">
+    <testcase name="Tentative d&#39;accès non autorisé à la page compte" classname="testLogin" time="2.703" assertions="2">
 
     
 
