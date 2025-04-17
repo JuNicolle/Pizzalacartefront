@@ -12,3 +12,4 @@ const RouteSecu = () => {
 }
 
 export default RouteSecu;
+

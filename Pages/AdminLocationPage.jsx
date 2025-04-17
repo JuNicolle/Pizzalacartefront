@@ -93,7 +93,7 @@ const AdminLocations = () => {
                 onClick={() => setShowForm(!showForm)}
                 className="mb-3"
               >
-                {showForm ? "Fermer le formulaire" : "Ajouter un produit"}
+                {showForm ? "Fermer le formulaire" : "Ajouter un emplacement"}
               </Button> 
               </div>
             {showForm && (

@@ -4,9 +4,14 @@ import Form from 'react-bootstrap/Form';
 import UserService from '../Services/UserService';
 import NavBar from '../Components/NavBar';
 import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
+
 
 const SignInPage = () => {
 
+
+  const navigate = useNavigate();
+  
     const [user, setUser] = useState({});
 
     const handleChange = (e) => {
@@ -26,8 +31,10 @@ const SignInPage = () => {
         try {
             const response = await UserService.addUser(user);    
             console.log(response);
+            navigate('/LoginPage');
             toast.success('Compte créé avec succés', {
               autoClose: 900});
+            
         }
         catch (error) {
             console.error(error);

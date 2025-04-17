@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import UserService from "../Services/UserService";
 import NavBar from "../Components/NavBar";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../Context/AuthContext";
 
 const AccountPage = () => {
-  const { isAuthentified } = useContext(AuthContext);
+  const { isAuthentified, setIsAuthentified } = useContext(AuthContext);
   const [user, setUser] = useState({});
   const [tempUser, setTempUser] = useState({});
-
   const [nameUpdate, setNameUpdate] = useState(false);
   const [firstNameUpdate, setFirstNameUpdate] = useState(false);
   const [emailUpdate, setEmailUpdate] = useState(false);
@@ -17,6 +16,8 @@ const AccountPage = () => {
   const [cityUpdate, setCityUpdate] = useState(false);
   const [zipcodeUpdate, setZipcodeUpdate] = useState(false);
   const [phoneUpdate, setPhoneUpdate] = useState(false);
+  const navigate = useNavigate();
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const fetchUser = async () => {
     try {
@@ -66,6 +67,20 @@ const AccountPage = () => {
   const handleCancel = (toggleSetter) => {
     setTempUser(user); // restaure la valeur initiale de user
     toggleSetter(false); // Ferme l'input
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      await UserService.deleteMyAccount();
+      // Déconnexion après suppression du compte
+      UserService.logoutUser();
+      setIsAuthentified(false);
+      // Redirection vers la page d'accueil
+      navigate("/");
+    } catch (error) {
+      console.error("Erreur lors de la suppression du compte:", error);
+      // Ajouter ici une gestion des erreurs (affichage d'un message, etc.)
+    }
   };
 
   useEffect(() => {
@@ -204,9 +219,7 @@ const AccountPage = () => {
           <p>
             Mot de passe :{" "}
             <Button variant="secondary" className="buttonMdp">
-              <Link to={"/SendCodePage"}>
-                Reinitialiser mon mot de passe{" "}
-              </Link>
+              <Link to={"/SendCodePage"}>Reinitialiser mon mot de passe </Link>
             </Button>
           </p>
 
@@ -258,15 +271,13 @@ const AccountPage = () => {
               </div>
               <div>
                 <Button
-                variant="light"
-                onClick={() => {
-                  setAddressUpdate(true);
-                  setTempUser(user);
-                }}>
-                <img
-                  src="src/assets/stylo.png"
-                  alt="modify"
-                />
+                  variant="light"
+                  onClick={() => {
+                    setAddressUpdate(true);
+                    setTempUser(user);
+                  }}
+                >
+                  <img src="src/assets/stylo.png" alt="modify" />
                 </Button>
               </div>
             </div>
@@ -296,7 +307,7 @@ const AccountPage = () => {
               {/* remplie tempUser avec les valeurs actuelles avant d'ouvrir l'input */}
               <div className="inputAccount">
                 <div>
-                  <p>Tel : {user.phone}</p>
+                  <p>Tel : 0{user.phone}</p>
                 </div>
                 <div>
                   <Button
@@ -313,18 +324,18 @@ const AccountPage = () => {
             </>
           )}
 
-          <div >
+          <div>
             <div className="adminButtonsCat">
               {user.role == "admin" ? (
                 <>
-                  <Button size="lg"  className="adminButtons">
-                    <Link to={"/AdminPizzaPage"} >GESTION PIZZAS</Link>
+                  <Button size="lg" className="adminButtons">
+                    <Link to={"/AdminPizzaPage"}>GESTION PIZZAS</Link>
                   </Button>
                   <Button size="lg" className="adminButtons">
-                    <Link to={"/AdminUserPage"} >GESTION USERS</Link>
+                    <Link to={"/AdminUserPage"}>GESTION USERS</Link>
                   </Button>
                   <Button size="lg" className="adminButtons">
-                    <Link to={"/AdminLocationPage"} >GESTION EMPLACEMENTS</Link>
+                    <Link to={"/AdminLocationPage"}>GESTION EMPLACEMENTS</Link>
                   </Button>
                 </>
               ) : (
@@ -333,10 +344,10 @@ const AccountPage = () => {
             </div>
 
             <div className="viewOrderButton">
-            {user.role == "admin" ? (
+              {user.role == "admin" ? (
                 <>
-                  <Button variant="danger"className="adminButtons">
-                  <Link to={"/AdminOrderPage"} >GESTION COMMANDES</Link>
+                  <Button variant="danger" className="adminButtons">
+                    <Link to={"/AdminOrderPage"}>GESTION COMMANDES</Link>
                   </Button>
                 </>
               ) : (
@@ -344,10 +355,44 @@ const AccountPage = () => {
               )}
             </div>
 
-           
-
             {user.role == "client" ? (
               <>
+                <div
+                  className="delete-account-section"
+                  style={{ marginTop: "30px" }}
+                >
+                  <Button
+                    variant="danger"
+                    onClick={() => setShowConfirmModal(true)}
+                  >
+                    Supprimer mon compte
+                  </Button>
+                </div>
+
+                <Modal
+                  show={showConfirmModal}
+                  onHide={() => setShowConfirmModal(false)}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Confirmation de suppression</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    Êtes-vous sûr de vouloir supprimer définitivement votre
+                    compte ? Cette action est irréversible.
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button
+                      variant="secondary"
+                      onClick={() => setShowConfirmModal(false)}
+                    >
+                      Annuler
+                    </Button>
+                    <Button variant="danger" onClick={handleDeleteAccount}>
+                      Supprimer définitivement
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+
                 <h1>Mes commandes</h1>
               </>
             ) : (

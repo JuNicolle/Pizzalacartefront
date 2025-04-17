@@ -34,7 +34,11 @@ const LocationPage = () => {
                     {locations.map((location) => (
                <li key={location.id_location}> {location.schedule} : {location.name} <br /> {location.address} </li> 
             ))}
+            <img id="mario"src="src/assets/mario.webp" alt="" />
           </div>
+          
+          
+
           <FooterPizz/> 
         </div>
         <div className="rightPart">
@@ -42,6 +46,7 @@ const LocationPage = () => {
           <Cart/>
         </div>
       </div>
+      
     </>
   );
 };

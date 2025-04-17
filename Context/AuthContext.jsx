@@ -9,4 +9,4 @@ const AuthContext = createContext({
     //setRoles: () => {}
 });
 
-export default AuthContext;
+export default AuthContext

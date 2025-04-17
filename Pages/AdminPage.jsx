@@ -10,7 +10,7 @@ const AdminPage = () => {
         <div className="leftPart">
           <NavBar />
           <div>
-            <h2>Panneau Admin</h2>
+            
           </div>
           <div className="adminPanel">
             <Link to={"/AdminPizzaPage"}>
@@ -31,12 +31,12 @@ const AdminPage = () => {
                 <img src="src/assets/userimg.jpg" alt="" />
               </div>
             </Link>
-            <Link to={"/AdminOrderPage"}>
+           {/*  <Link to={"/AdminOrderPage"}>
               <div className="adminCard">
                 <h3>Commandes en cours</h3>
                 <img src="src/assets/10219.jpg" alt="" />
               </div>
-            </Link>
+            </Link> */}
           </div>
         </div>
         

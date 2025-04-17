@@ -10,10 +10,6 @@ module.exports = {
 
     // URL de base de l'application
     const baseUrl = "http://localhost:5173";
-    const submitButton =
-      "#root > div > div > div.leftPart > div.bodyLogin > div.loginForm > form > button";
-
-    const loginButton ="#loginButton > a"
 
     browser
       // Étape 1: Ouvrir l'application
@@ -82,7 +78,6 @@ module.exports = {
   "Tentative de connexion avec informations invalides": function (browser) {
     const invalidEmail = "invalid@example.com";
     const invalidPassword = "wrongpassword";
-    const baseUrl = "http://localhost:3000";
 
     browser
       .waitForElementVisible('#loginButton a')

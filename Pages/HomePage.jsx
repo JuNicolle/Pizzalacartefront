@@ -5,11 +5,14 @@ import ProductCard from "../Components/ProductCard";
 import Cart from "../Components/Cart";
 import FooterPizz from "../Components/FooterPizz";
 import FormCategory from "../Components/FormCategory";
+import LocationService from "../Services/LocationService";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+  const [todayLocations, setTodayLocations] = useState([]); 
+  const [currentDay, setCurrentDay] = useState(""); 
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,13 +39,37 @@ const HomePage = () => {
     }
   };
 
+  const fetchTodayLocations = async () => {
+    try {
+      const response = await LocationService.GetTodayLocations();
+      setTodayLocations(response.data);
+    } catch (error) {
+      console.error("Erreur lors du chargement des emplacements du jour:", error);
+    }
+  };
+
+  const getCurrentDay = () => {
+    const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+    const month = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+    
+    const date = new Date();
+    const daysWeek = days[date.getDay()];
+    const day = date.getDate();
+    const actualMonth = month[date.getMonth()];
+    
+    return `${daysWeek} ${day} ${actualMonth}`;
+  };
+
   const handleCategoryChange = (categoryId) => {
     setSelectedCategory(categoryId);
     fetchProducts(categoryId);
   };
 
+
   useEffect(() => {
     fetchProducts(0);
+    fetchTodayLocations();
+    setCurrentDay(getCurrentDay());
   }, []);
 
   return (
@@ -54,9 +81,23 @@ const HomePage = () => {
           <div id="pizzaOfTheMonth">
             <h2>Découvrez notre pizza du moment</h2>
           </div>
+
           <div id="dayLocation">
-            <h3>Aujourd'hui nous sommes à </h3>
+            <h3>Aujourd'hui nous sommes à : </h3>
+            {todayLocations.length > 0 ? (
+              <div className="locationList">
+                {todayLocations.map((location, index) => (
+                  <div key={location.id_location} className="locationItem">
+                    <p className="locationName">{location.name}</p>
+                    {index < todayLocations.length - 1 && <hr />}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>Aucun emplacement disponible aujourd'hui</p>
+            )}
           </div>
+
         </div>
 
         <div className="newIngredient">

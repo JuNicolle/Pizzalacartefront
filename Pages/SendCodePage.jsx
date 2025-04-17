@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import UserService from "../Services/UserService";
 import NavBar from "../Components/NavBar";
 import { useNavigate } from "react-router-dom";
+import FooterPizz from "../Components/FooterPizz";
 
 
 
@@ -41,17 +42,20 @@ const SendCodePage = () => {
         <div className="loginForm">
         <Form onSubmit={handleSubmit} className="form">
             <Form.Group className="mb-3 col-9" >
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Saisissez votre email pour recevoir un code</Form.Label>
                 <Form.Control type="email" placeholder="Entrez votre email" name='email' value={mail.email} onChange={handleChange} required />
             </Form.Group>
 
            
             <Button variant="primary" type="submit">
-                Envoyez moi un nouveau mot de passe
+                Envoyez moi un code de reinitialisation
             </Button>
         </Form>
         </div>
 
+        <div className="adminFooter">
+        <FooterPizz/>
+        </div>
         
         </div>
     </div>
@@ -61,7 +65,7 @@ const SendCodePage = () => {
 
     </div>
         
-
+    
 
 
     </>;

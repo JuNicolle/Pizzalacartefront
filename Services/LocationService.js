@@ -22,12 +22,17 @@ function DeleteLocation(id) {
     return axios.delete(`${BASE_URL}/deleteLocation/${id}`);
 }
 
+function GetTodayLocations() {
+    return axios.get(`${BASE_URL}/getTodayLocations`);
+}
+
 export const LocationService = {
     GetAllLocations,
     GetLocationById,
     CreateLocation,
     UpdateLocation,
-    DeleteLocation
+    DeleteLocation,
+    GetTodayLocations
 }
 
 export default LocationService;

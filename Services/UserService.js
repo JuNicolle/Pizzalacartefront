@@ -56,6 +56,10 @@ function deleteUser(id) {
     return axios.delete(`http://localhost:3000/pizzalacarte/deleteUser/${id}`);
 }
 
+function deleteMyAccount() {
+    return axios.delete('http://localhost:3000/pizzalacarte/deleteMyAccount');
+  }
+
 export default {
     addUser,
     loginUser,
@@ -65,5 +69,6 @@ export default {
     logoutUser,
     SendCode,
     ResetPassword,
-    deleteUser
+    deleteUser,
+    deleteMyAccount
 };

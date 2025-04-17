@@ -647,6 +647,15 @@ form {
   margin-bottom: 3vh;
 }
 
+.formResetPassword{
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  align-items: center;
+  margin-top: 4vh;
+  font-family: "Kay Pho Du", serif;
+}
+
 td, th{
   border: 1px solid var(--gray-color);
   padding: 10px;
@@ -676,6 +685,12 @@ tr:hover{
 .commandPanelPizza a{
   text-decoration: none;
   color: white;
+}
+
+#dayLocation{
+  display: flex;
+  padding-top: 2vh;
+  font-family: "Kay Pho Du", serif;
 }
 
 
@@ -848,7 +863,7 @@ tr:hover{
   
     /* Page Emplacements */
     .listLocations {
- 
+      position: relative;
       padding: 15px;
 
     }
@@ -937,3 +952,13 @@ tr:hover{
     }
  }
 
+#mario {
+  width: 400px;
+  margin-left: 60vw;
+  margin-top: 27vh;
+  z-index: 10;
+  transform :rotate(-21deg);
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+  position:absolute;
+}

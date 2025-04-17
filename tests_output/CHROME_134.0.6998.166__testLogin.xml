@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="3">
+
+  <testsuite name="testLogin"
+    errors="0" failures="0" hostname="" id="" package="testLogin" skipped="0"
+    tests="3" time="28.43" timestamp="">
+  
+    <testcase name="Connexion et accès à la page compte" classname="testLogin" time="7.544" assertions="20">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Tentative de connexion avec informations invalides" classname="testLogin" time="3.790" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Tentative d&#39;accès non autorisé à la page compte" classname="testLogin" time="2.883" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>
