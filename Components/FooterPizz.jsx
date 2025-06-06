@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const FooterPizz = () => {
 
     return <>
@@ -6,9 +8,9 @@ const FooterPizz = () => {
                 <p>2025 Pizz'à La Carte - Tous droits réservés.</p>
             </div>
 
-            <div>
-                <p>Politique de confidentialité.</p>
-            </div>
+            <Link to="/privacy-policy" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <p>Politique de confidentialité</p>
+                </Link>
         </div>
     
     

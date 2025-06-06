@@ -134,6 +134,13 @@ form {
   color: var(--white-color);
 }
 
+.backButton{
+  text-decoration: none;
+  font-family: "Kay Pho Du", serif;
+  color: whitesmoke;
+
+}
+
 .navBarHeader img {
   width: 4vw;
 }
@@ -217,12 +224,11 @@ form {
 
 .listItems {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 3vw;
   background-color: var(--gray-color);
-  padding-top: 4vh;
-  padding-bottom: 5vh;
+  padding: 4vh 2vw 5vh 2vw;
+  gap: 32px;
 }
 
 .listLocations {
@@ -675,6 +681,7 @@ tr:hover{
   display: flex;
   gap: 4vw;
   padding-left: 3vw;
+  padding-top: 2vh;
 }
 
 .table{
@@ -961,4 +968,209 @@ tr:hover{
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
   position:absolute;
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+  background-color: #fff5f5 !important;
+}
+
+/* Message d'erreur */
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.small {
+  font-size: 0.875em;
+}
+
+/* CSS pour la politique de confidentialité */
+
+.privacy-policy-container {
+  padding: 2rem 4rem;
+  background-color: var(--background-color);
+  min-height: 70vh;
+  font-family: "Kay Pho Du", serif;
+}
+
+.privacy-content {
+  max-width: 800px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.privacy-content h1 {
+  color: var(--red-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.privacy-content h2 {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--red-color);
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.privacy-content h3 {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.privacy-content h4 {
+  color: var(--red-color);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.privacy-content p {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  text-align: justify;
+}
+
+.privacy-content ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.privacy-content li {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.privacy-content strong {
+  color: var(--red-color);
+  font-weight: 600;
+}
+
+.privacy-content a {
+  color: var(--red-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.privacy-content a:hover {
+  text-decoration: underline;
+}
+
+.last-updated {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.contact-info {
+  background-color: var(--gray-color);
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem 0;
+}
+
+.contact-info p {
+  margin-bottom: 0.5rem;
+}
+
+.rights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.right-item {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+  border-left: 4px solid var(--red-color);
+}
+
+.right-item h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.right-item p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.exercise-rights {
+  background-color: var(--green-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.exercise-rights p {
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.exercise-rights a {
+  color: white;
+  font-weight: bold;
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.contact-section > div {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.contact-section h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.final-note {
+  background-color: var(--background-color);
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 2rem;
+  border: 2px dashed var(--gray-color);
+}
+
+.final-note p {
+  margin-bottom: 0;
+  font-style: italic;
+  color: var(--text-color);
+}
+
+.privacy-policy-container {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 6vh;
+
+.cardProduct{
+  cursor: pointer;
+  width: 18rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
 }

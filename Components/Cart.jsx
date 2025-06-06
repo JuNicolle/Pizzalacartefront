@@ -106,7 +106,9 @@ const Cart = () => {
                     </div>
                 </>
             ) : (
-                <p className="p-4 text-center text-gray-500">Votre panier est vide</p>
+                <p className="p-4 text-center text-gray-500">
+                    La commande en ligne n'est pas encore disponible. <br/> Ajoutez vos pizzas au panier et appelez nous, on se fait un plaisir de vous les préparer !
+                    </p>
             )}
         </div>
     );

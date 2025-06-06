@@ -23,6 +23,7 @@ import AdminPizzaPage from "../Pages/AdminPizzaPage";
 import AdminPage from "../Pages/AdminPage";
 import SendCodePage from "../Pages/SendCodePage";
 import ResetPasswordPage from "../Pages/ResetPasswordPage";
+import PrivacyPolicyPage from "../Pages/PrivacyPolicyPage";
 
 function App() {
   const [isAuthentified, setIsAuthentified] = useState(AuthService.isValid());
@@ -51,20 +52,20 @@ function App() {
                 <Route path="/LocationPage" element={<LocationPage />} />
                 <Route path="/SendCodePage" element={<SendCodePage />} />
                 <Route path="/ResetPasswordPage" element={<ResetPasswordPage />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                 
                 <Route element={<RouteSecu />}>
                   <Route path="/AccountPage" element={<AccountPage />} />
                   <Route path="/OrderRecapPage" element={<OrderRecapPage />} />
                   <Route path="/confirmation" element={<OrderConfirmationPage />} />
-                  
-                </Route>
-                <Route>
                   <Route path="/AdminPage" element={<AdminPage/>}/>
                   <Route path="/AdminOrderPage" element={<AdminOrderPage/>}/>
                   <Route path="/AdminUserPage" element={<AdminUserPage/>}/>
                   <Route path="/AdminLocationPage" element={<AdminLocationPage/>}/>
                   <Route path="/AdminPizzaPage" element={<AdminPizzaPage/>}/>
+
                 </Route>
+                
               </Routes>
 
               <ToastContainer

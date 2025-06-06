@@ -12,7 +12,22 @@ function getProductsByCategory(categoryId) {
 }
 
 function createProduct(productData){
-    return axios.post(`${API_URL}/createProduct`, productData);
+
+    const formData = new FormData();
+    
+    Object.keys(productData).forEach(key => {
+        if (key === 'image' && productData[key]) {
+            formData.append('image', productData[key]);
+        } else if (key !== 'image' && productData[key] !== null && productData[key] !== undefined && productData[key] !== '') {
+            formData.append(key, productData[key]);
+        }
+    });
+
+    return axios.post(`${API_URL}/createProduct`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    });
 }
 
 function deleteProduct(id){
@@ -20,7 +35,21 @@ function deleteProduct(id){
 }
 
 function updateProduct(id, productData){
-    return axios.post(`${API_URL}/updateProduct/${id}`, productData)
+    const formData = new FormData();
+    
+    Object.keys(productData).forEach(key => {
+        if (key === 'image' && productData[key]) {
+            formData.append('image', productData[key]);
+        } else if (key !== 'image' && productData[key] !== null && productData[key] !== undefined) {
+            formData.append(key, productData[key]);
+        }
+    });
+
+    return axios.post(`${API_URL}/updateProduct/${id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    });
 }
 
 export default {

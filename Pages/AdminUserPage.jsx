@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar";
 import FooterPizz from "../Components/FooterPizz";
 import Cart from "../Components/Cart";
-import { Button, ButtonGroup } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import UserService from "../Services/UserService";
+import { Link } from "react-router-dom";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -78,6 +79,13 @@ const AdminUsers = () => {
           <div className="leftPart">
               <NavBar/>
               {error && <div className="error-message" style={{ color: 'red', margin: '10px 0' }}>{error}</div>}
+              
+              <div className="commandPanelPizza">
+              <Button variant="danger" className="mb-3">
+              <Link to={"/AdminPage"}>Retour</Link>
+              </Button>
+              </div>
+
               <div className="adminForm">
                   <table>
                       <thead>
