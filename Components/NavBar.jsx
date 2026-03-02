@@ -92,34 +92,50 @@ const NavBar = () => {
           </div>
         </Nav>
 
-        <Nav>
-          <div className="navLinkGrey" onClick={() => navigate("/")}>
-            <Link to={"/"} className="navBarButton">
-              Nos Pizzas
-            </Link>
-          </div>
-          <div
-            className="navLinkWhite"
-            onClick={() => navigate("/locationPage")}
-          >
-            <Link to={"/LocationPage"} className="navBarButton">
-              Nos emplacements
-            </Link>
-          </div>
-          <div className="navLinkGrey navLinkGreyPhone">
-            <a href="tel:0612345678" className="navBarButton">
-              Appelez nous
-            </a>
-          </div>
-          <div className="phoneCart">
-          {isMobile && (
-            <div >
-              <Link to={"/OrderRecapPage"}><img src="src/assets/panier.png" alt="" /></Link>
+        {!isMobile && (
+          <Nav>
+            <div className="navLinkGrey" onClick={() => navigate("/")}>
+              <Link to={"/"} className="navBarButton">
+                Nos Pizzas
+              </Link>
             </div>
-          )}
-          </div>
-        </Nav>
+            <div
+              className="navLinkWhite"
+              onClick={() => navigate("/locationPage")}
+            >
+              <Link to={"/LocationPage"} className="navBarButton">
+                Nos emplacements
+              </Link>
+            </div>
+            <div className="navLinkGrey navLinkGreyPhone">
+              <a href="tel:0612345678" className="navBarButton">
+                Appelez nous
+              </a>
+            </div>
+          </Nav>
+        )}
       </div>
+
+      {isMobile && (
+        <nav className="mobileBottomNav">
+          <Link to={"/"} className="mobileNavItem">
+            <span className="mobileNavIcon">🍕</span>
+            <span className="mobileNavLabel">Pizzas</span>
+          </Link>
+          <Link to={"/LocationPage"} className="mobileNavItem">
+            <span className="mobileNavIcon">📍</span>
+            <span className="mobileNavLabel">Emplacements</span>
+          </Link>
+          <a href="tel:0612345678" className="mobileNavItem">
+            <span className="mobileNavIcon">📞</span>
+            <span className="mobileNavLabel">Appel</span>
+          </a>
+          <Link to={"/OrderRecapPage"} className="mobileNavItem">
+            <span className="mobileNavIcon">🛒</span>
+            <span className="mobileNavLabel">Panier</span>
+          </Link>
+        </nav>
+      )}
     </>
   );
 };
