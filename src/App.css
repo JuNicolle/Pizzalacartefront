@@ -7,9 +7,14 @@
   --text-color: #565353;
   --red-color: #c72d2d;
   --green-color: #488517;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.16);
+  --radius: 12px;
+  --transition: 0.18s ease;
 }
 
-/* Conteneur principal */
+/* ── Conteneur général ── */
 .form-container {
   display: flex;
   justify-content: center;
@@ -21,23 +26,25 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* Formulaire */
+
 form {
   width: 100%;
   max-width: 600px;
   padding: 20px;
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
   box-sizing: border-box;
   margin: 0;
 }
 
-/* Navbar et entete Pizzalacarte */
+/* ── Navbar ── */
 .navBarBody {
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-sm);
 }
+
 .navBar {
   display: flex;
   justify-content: space-between;
@@ -46,17 +53,21 @@ form {
   background-color: var(--background-color);
   padding: 10px;
 }
+
 .navLink {
   display: flex;
   gap: 5vw;
 }
+
 .body {
   display: flex;
   min-height: 100vh;
 }
+
 .app {
   min-height: 100vh;
 }
+
 .bodyApp {
   display: flex;
   flex-direction: column;
@@ -64,6 +75,7 @@ form {
   height: 100vh;
   width: 100vw;
 }
+
 .navLinkGrey {
   display: flex;
   align-items: center;
@@ -73,12 +85,19 @@ form {
   width: 26vw;
   border: 1px solid #d0c9c9;
   cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
 }
 
 .navLinkGrey:hover,
 .navLinkWhite:hover {
-  background-color: rgba(128, 128, 128, 0.551);
+  background-color: rgba(199, 45, 45, 0.1);
 }
+
+.navLinkGrey:hover .navBarButton,
+.navLinkWhite:hover .navBarButton {
+  color: var(--red-color);
+}
+
 .navLinkWhite {
   display: flex;
   align-items: center;
@@ -89,7 +108,9 @@ form {
   width: 26vw;
   border: 1px solid #d0c9c9;
   cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
 }
+
 .navBarButton {
   text-decoration: none;
   font-family: "Kay Pho Du", serif;
@@ -97,48 +118,58 @@ form {
   font-style: normal;
   font-size: 4vh;
   color: var(--text-color);
+  transition: color var(--transition);
 }
+
 .navBarHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--background-color);
+  background-color: white;
   height: 12vh;
   width: 80vw;
   padding-left: 7vw;
   padding-right: 4vw;
+  border-bottom: 1px solid #eee;
 }
+
 #titlePizz {
   font-family: "Kay Pho Du", serif;
   font-style: normal;
   color: var(--text-color);
   font-size: 6vh;
+  letter-spacing: -0.5px;
 }
+
 #loginButton {
   background-color: var(--gray-color);
   border: none;
   border-radius: 25px;
   width: 23vw;
+  transition: background-color var(--transition);
 }
+
 #loginButton:hover {
   background-color: var(--green-color);
 }
+
 #loginButton a {
   font-family: "Kay Pho Du", serif;
   text-decoration: none;
   font-style: normal;
   font-size: 3vh;
   color: var(--text-color);
+  transition: color var(--transition);
 }
+
 #loginButton a:hover {
   color: var(--white-color);
 }
 
-.backButton{
+.backButton {
   text-decoration: none;
   font-family: "Kay Pho Du", serif;
   color: whitesmoke;
-
 }
 
 .navBarHeader img {
@@ -152,13 +183,12 @@ form {
   cursor: pointer;
 }
 
-
 .bodyNavBar {
   display: flex;
   flex-basis: auto;
 }
 
-
+/* ── Layout principal ── */
 .leftPart {
   width: 78vw;
   min-height: 100%;
@@ -178,8 +208,7 @@ form {
   padding-top: 4vh;
   color: var(--white-color);
   font-family: "Kay Pho Du", serif;
-  display: flex;
-
+  overflow-y: auto;
 }
 
 .leftPart.blurred {
@@ -187,57 +216,180 @@ form {
   pointer-events: none;
 }
 
+/* ── HomePageInfos (bandeau hero) ── */
 .homePageInfos {
   display: flex;
-  justify-content: space-between;
-  padding-right: 6vw;
-  align-items: center;
-  height: 10vh;
-}
-
-.homePageInfos h3 {
-  font-family: "Kay Pho Du", serif;
-  width: 60%;
-  font-size: 3vh;
+  align-items: stretch;
+  height: 18vh;
+  overflow: hidden;
 }
 
 #pizzaOfTheMonth {
-  background-color: var(--red-color);
-  width: 45vw;
-  height: 10vh;
-  padding-top: 3vh;
-  padding-left: 2vw;
-  padding-bottom: 3vh;
+  background: linear-gradient(135deg, var(--red-color) 0%, #9b1f1f 100%);
+  width: 48%;
   display: flex;
   align-items: center;
+  padding: 0 3vw;
   color: whitesmoke;
   font-family: "Kay Pho Du", serif;
-
   position: relative;
-  clip-path: ellipse(530px 140px at 10% 110%);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+#pizzaOfTheMonth::after {
+  content: "🍕";
+  position: absolute;
+  right: -4px;
+  bottom: -16px;
+  font-size: 7.5rem;
+  opacity: 0.15;
+  transform: rotate(-20deg);
+  line-height: 1;
+  pointer-events: none;
 }
 
 #pizzaOfTheMonth h2 {
-  width: 50%;
-  font-size: 4vh;
+  width: 72%;
+  font-size: 2.3vh;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  position: relative;
+  z-index: 1;
 }
 
-.listItems {
+/* ── Info du jour ── */
+#dayLocation {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  padding: 0 2.5vw;
+  background-color: white;
+  border-top: 4px solid var(--red-color);
+  border-left: 1px solid #ece8e8;
+  font-family: "Kay Pho Du", serif;
+  flex-wrap: wrap;
+}
+
+.dayInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.dayInfoDate {
+  font-weight: 700;
+  color: var(--text-color);
+  font-size: 1.9vh;
+  line-height: 1.2;
+}
+
+.dayInfoLabel {
+  font-size: 1.5vh;
+  color: #888;
+  font-weight: 500;
+}
+
+.dayInfoSep {
+  width: 1px;
+  align-self: stretch;
+  background-color: #e0dada;
+  margin: 8px 0;
+  flex-shrink: 0;
+}
+
+.locationList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.locationItem p.locationName {
+  margin: 0;
+  font-size: 1.8vh;
+  font-weight: 700;
+  color: var(--red-color);
+}
+
+.noLocationMsg {
+  margin: 0;
+  font-size: 1.6vh;
+  color: #999;
+  font-style: italic;
+}
+
+/* ── Barre filtre / ingrédient ── */
+.newIngredient {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  background-color: var(--gray-color);
-  padding: 4vh 2vw 5vh 2vw;
-  gap: 32px;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #ece8e8;
+  font-family: "Kay Pho Du", serif;
+  padding: 1.2vh 2.5vw;
+  gap: 1vw;
 }
 
+.newIngredient > div:first-child span {
+  font-size: 1.9vh;
+  color: var(--red-color);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.newIngredient > div:first-child span::before {
+  content: "✨";
+  font-size: 1.5vh;
+}
+
+/* ── Liste des produits ── */
+.listItems {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background-color: var(--background-color);
+  padding: 3vh 2.5vw 5vh 2.5vw;
+  gap: 28px;
+}
+
+/* ── Cartes produits ── */
+.card {
+  border-radius: var(--radius);
+  height: 27rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card img {
+  height: 50%;
+  object-fit: cover;
+}
+
+.cardProduct {
+  cursor: pointer;
+  width: 18rem;
+}
+
+/* ── Emplacements ── */
 .listLocations {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 2vh;
-  background-color: var(--gray-color);
+  background-color: var(--background-color);
   height: 70vh;
   padding-left: 5vw;
   padding-top: 4vh;
@@ -254,26 +406,22 @@ form {
   font-size: 7vh;
 }
 
-.card {
-  border-radius: 25px;
-  height: min-content;
-}
-
+/* ── Modal produit ── */
 .productModal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 25px;
+  border-radius: 20px;
   width: 35vw;
   background-color: whitesmoke;
-
-  padding: 17px;
-  gap: 8px;
+  padding: 20px;
+  gap: 10px;
+  box-shadow: var(--shadow-lg);
 }
 
 .productModal img {
   width: 80%;
-  border-radius: 25px;
+  border-radius: 16px;
 }
 
 .productModal p {
@@ -286,18 +434,6 @@ form {
   font-weight: normal;
 }
 
-.overlayStyles {
-  position: "fixed";
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: "rgba(0, 0, 0, 0.5)";
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
-}
-
 .productModal input {
   height: 10vh;
   width: 90%;
@@ -305,6 +441,19 @@ form {
   border: 1px solid gray;
 }
 
+.overlayStyles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── Formulaires ── */
 .form {
   display: flex;
   flex-direction: column;
@@ -338,42 +487,26 @@ form {
   padding-top: 4vh;
 }
 
-.newIngredient{
-  background-color: var(--gray-color);
-  font-family: "Kay Pho Du", serif;
-  color: var(--red-color);
-  font-weight: bold;
-  font-size: 3vh;
-  padding-left: 3vw;
-  padding-top: 2vh;
-}
-
-.card{
-  height:27rem;
-}
-
-.card img{
-  height: 50%;
-}
-
-.buttonOnline{
+/* ── Boutons en ligne ── */
+.buttonOnline {
   display: flex;
-  gap:10px;
+  gap: 10px;
 }
 
-.buttonOnline a{
+.buttonOnline a {
   text-decoration: none;
   color: whitesmoke;
   font-family: "Kay Pho Du", serif;
 }
 
-.buttonMdp a{
+.buttonMdp a {
   color: whitesmoke;
   text-decoration: none;
   font-family: "Kay Pho Du", serif;
 }
 
-.bodyAccount{
+/* ── Page Mon Compte ── */
+.bodyAccount {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -383,7 +516,7 @@ form {
   font-size: 3.5vh;
 }
 
-.coordonnees{
+.coordonnees {
   display: flex;
   flex-direction: column;
   gap: 2vh;
@@ -391,18 +524,19 @@ form {
   padding-bottom: 4vh;
 }
 
-.inputAccount{
+.inputAccount {
   display: flex;
   justify-content: space-between;
-  gap:20vw;
+  gap: 20vw;
   border-bottom: solid 1px rgb(211, 202, 202);
 }
 
-.inputAccount img{
+.inputAccount img {
   width: 2vw;
 }
 
-#footer{
+/* ── Footer ── */
+#footer {
   display: flex;
   justify-content: space-between;
   width: 93vw;
@@ -413,10 +547,11 @@ form {
   font-family: "Kay Pho Du", serif;
   font-size: 2.5vh;
   background: linear-gradient(#bebebe84, rgba(133, 129, 129, 0.675));
-
+  border-top: 2px solid rgba(199, 45, 45, 0.18);
 }
 
-.orderRecapDiv{
+/* ── Récapitulatif commande ── */
+.orderRecapDiv {
   height: 70vh;
   display: flex;
   padding-left: 2vw;
@@ -425,9 +560,9 @@ form {
   flex-direction: column;
 }
 
-.orderRecapDiv div{
+.orderRecapDiv div {
   border: 1px solid var(--text-color);
-  color:#c72d2d;
+  color: #c72d2d;
   border-radius: 25px;
   padding: 1rem;
   width: 30vw;
@@ -435,11 +570,9 @@ form {
   justify-content: center;
   background-color: var(--background-color);
   font-family: "Kay Pho Du", serif;
-
 }
 
-/* Page recapitulative de la commande en cours */
-
+/* ── Page recap commande ── */
 .order-recap-container {
   max-width: 768px;
   margin: 0 auto;
@@ -454,8 +587,8 @@ form {
 
 .order-card {
   background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
   padding: 1.5rem;
 }
 
@@ -483,7 +616,7 @@ form {
   width: 5rem;
   height: 5rem;
   object-fit: cover;
-  border-radius: 0.25rem;
+  border-radius: 8px;
 }
 
 .item-details {
@@ -537,102 +670,105 @@ form {
   color: #dc2626;
 }
 
-/* ************************************************ */
-
-#orderConfirmationDiv{
+/* ── Confirmation ── */
+#orderConfirmationDiv {
   height: 70vh;
   padding-top: 10vh;
   font-family: "Kay Pho Du", serif;
 }
 
-.formCategory{
+/* ── Filtre catégorie ── */
+.formCategory {
   width: 25vw;
 }
 
-.adminButtonsCat{
+/* ── Admin boutons ── */
+.adminButtonsCat {
   display: flex;
-  gap : 3vw;
+  gap: 3vw;
   padding-bottom: 3vh;
 }
 
-.adminButtons{
+.adminButtons {
   height: 6vh;
-  
 }
 
-.adminButtons a{
+.adminButtons a {
   text-decoration: none;
   color: whitesmoke;
 }
 
-.adminButton{
-  background-color:#9c42ba;
+.adminButton {
+  background-color: #9c42ba;
   border: none;
+  transition: background-color var(--transition);
 }
 
-.adminButton:hover{
-  background-color:#501464;
+.adminButton:hover {
+  background-color: #501464;
 }
 
-.adminButton:active{
-  background-color:#501464 !important;
+.adminButton:active {
+  background-color: #501464 !important;
 }
 
-.adminButton{
-  background-color:#9c42ba;
-  border: none;
-}
-
-.adminButton a{
+.adminButton a {
   color: whitesmoke;
   text-decoration: none;
   font-family: "Kay Pho Du", serif;
 }
 
-.adminCard{
+/* ── Admin cards ── */
+.adminCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Kay Pho Du", serif;
   background-color: var(--gray-color);
   padding: 20px;
-  border-radius: 25px;
+  border-radius: 20px;
   margin-top: 3vh;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.adminCard img{
+.adminCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.adminCard img {
   height: 18rem;
   width: 18rem;
-  border-radius: 25px;
+  border-radius: 16px;
 }
 
-.adminPanel{
+.adminPanel {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap:4vw;
+  gap: 4vw;
   margin-bottom: 3vh;
 }
 
-.adminPanel a{
+.adminPanel a {
   text-decoration: none;
   color: var(--text-color);
 }
 
-.adminFooter{
+.adminFooter {
   position: fixed;
-  bottom:0;
+  bottom: 0;
 }
 
-.adminForm{
+.adminForm {
   display: flex;
-  gap:2vw;
+  gap: 2vw;
   flex-direction: column;
   margin-bottom: 2vh;
   padding-left: 4vw;
 }
 
-.adminFormContainer{
+.adminFormContainer {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -640,20 +776,19 @@ form {
   font-family: "Kay Pho Du", serif;
 }
 
-
-
-.adminFormPizza{
+.adminFormPizza {
   display: flex;
   flex-direction: column;
 }
 
-.pizzaFormDiv{
+.pizzaFormDiv {
   display: flex;
   justify-content: center;
   margin-bottom: 3vh;
 }
 
-.formResetPassword{
+/* ── Reset password ── */
+.formResetPassword {
   display: flex;
   flex-direction: column;
   gap: 2vh;
@@ -662,320 +797,57 @@ form {
   font-family: "Kay Pho Du", serif;
 }
 
-td, th{
+/* ── Tableaux ── */
+td, th {
   border: 1px solid var(--gray-color);
   padding: 10px;
 }
 
-tr:hover{
+tr:hover {
   background-color: var(--gray-color);
 }
 
-.tdButtons{
+.tdButtons {
   display: flex;
-  border : none;
-  gap:5px;
+  border: none;
+  gap: 5px;
 }
 
-.commandPanelPizza{
+.commandPanelPizza {
   display: flex;
   gap: 4vw;
   padding-left: 3vw;
   padding-top: 2vh;
 }
 
-.table{
-  margin-left : 2vw;
+.table {
+  margin-left: 2vw;
   width: 75vw;
 }
 
-.commandPanelPizza a{
+.commandPanelPizza a {
   text-decoration: none;
   color: white;
 }
 
-#dayLocation{
-  display: flex;
-  padding-top: 2vh;
-  font-family: "Kay Pho Du", serif;
-}
-
-
-  @media screen and (max-width: 767px) {
-    /* Layout général */
-    .leftPart {
-      width: 100vw;
-
-      overflow-x: hidden;
-    }
-  
-    .rightPart {
-      display: none;
-    }
-    
-    /* Navbar */
-    .navBarHeader {
-      width: 100vw;
-      padding: 0 15px;
-      height: auto;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      background-color: var(--red-color);
-    }
-    
-    .navBarHeader img {
-      width: 30px;
-    }
-    
-    #titlePizz {
-      font-size: 24px;
-      color: whitesmoke;
-    }
-    
-    .nav {
-      display: flex;
-
-      height: fit-content;
-      width: 100%;
-    }
-
-    .navBar {
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      padding: 0;
-    }
-    
-    
-    
-    .navLinkGrey, .navLinkWhite {
-      height: 8vh;
-      width: 50%;
-      font-size: 20px;
-    }
-
-    .navLinkGrey a, .navLinkWhite a {
-      font-size: 20px;
-    }
-
-    .navLinkGreyPhone{
-      height: 8vh;
-      width: 75%;
-      font-size: 20px;
-      background-color: var(--green-color);
-    }
-
-    .navLinkGreyPhone a{
-      color: whitesmoke;
-    }
-
-    .phoneCart{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 8vh;
-      width: 25%;
-      font-size: 20px;
-      border: 1px solid #d0c9c9;
-    }
-
-    .phoneCart img{
-      width: 35px;
-    }
-    
-    .navBarButton {
-      font-size: 14px;
-      text-align: center;
-    }
-    
-    #loginButton {
-      width: auto;
-      padding: 5px 15px;
-      background-color: var(--red-color)
-    }
-    
-    #loginButton a {
-      font-size: 14px;
-      color: whitesmoke;
-    }
-  
-    /* Page d'accueil */
-    .homePageInfos {
-      flex-direction: column;
-      height: auto;
-      padding: 10px;
-      gap: 10px;
-      align-items: flex-start;
-    }
-    
-    #pizzaOfTheMonth {
-      width: 100%;
-      border-radius: 15px;
-      padding: 15px;
-      height: 6vh;
-      display: none;
-    }
-    
-    #pizzaOfTheMonth h2 {
-      width: 100%;
-      font-size: 18px;
-    }
-    
-    .homePageInfos h3 {
-      width: 100%;
-      font-size: 16px;
-      display: flex;
-    }
-    
-    .newIngredient {
-      padding: 15px;
-      font-size: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    
-    .formCategory {
-      width: 100%;
-      margin-top: 10px;
-    }
-    
-    /* Liste des produits */
-    .listItems {
-      gap: 15px;
-      padding: 15px;
-    }
-    
-    .card {
-      width: 100% !important;
-      height: auto !important;
-      margin-bottom: 15px;
-    }
-    
-    /* Modal produit */
-    .productModal {
-      width: 90vw;
-      padding: 15px;
-    }
-  
-    /* Footer */
-    #footer {
-      width: 100vw;
-      padding: 5px;
-      font-size: 12px;
-      flex-direction: column;
-      gap: 5px;
-
-    }
-  
-    /* Page Emplacements */
-    .listLocations {
-      position: relative;
-      padding: 15px;
-
-    }
-    
- 
-    .listLocations h2 {
-      font-size: 24px;
-    }
-    
-    .listLocations li {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-  
-    /* Page de connexion */
-    .bodyLogin {
-      flex-direction: column;
-      padding: 15px;
-      gap: 20px;
-      align-items: center;
-    }
-    
-    .loginForm {
-      width: 100%;
-    }
-    
-    .noAccount {
-      width: 100%;
-    }
-    
-    /* Formulaires */
-    .form-container {
-      padding: 15px;
-    }
-    
-    form {
-      padding: 15px;
-    }
-    
-    /* Tableaux */
-    .table {
-      width: 100%;
-      margin-left: 0;
-      overflow-x: auto;
-      display: block;
-    }
-    
-    /* Commandes et Récapitulatifs */
-    .orderRecapDiv div {
-      width: 90%;
-    }
-    
-    .order-recap-container {
-      padding: 15px;
-    }
-    
-    .item-content {
-      flex-direction: column;
-    }
-    
-    .buttons-container {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    
-    /* Admin */
-    .adminPanel {
-      gap: 15px;
-    }
-    
-    .adminCard img {
-      height: auto;
-      width: 100%;
-      max-width: 250px;
-    }
-    
-    .adminForm {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-    
-    .commandPanelPizza {
-      flex-direction: column;
-      gap: 10px;
-      padding-left: 15px;
-    }
- }
-
+/* ── Mario ── */
 #mario {
   width: 400px;
   margin-left: 60vw;
   margin-top: 27vh;
   z-index: 10;
-  transform :rotate(-21deg);
+  transform: rotate(-21deg);
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
-  position:absolute;
+  box-shadow: var(--shadow-lg);
+  position: absolute;
 }
 
+/* ── Validation formulaires ── */
 .is-invalid {
   border-color: #dc3545 !important;
   background-color: #fff5f5 !important;
 }
 
-/* Message d'erreur */
 .text-danger {
   color: #dc3545 !important;
 }
@@ -984,21 +856,21 @@ tr:hover{
   font-size: 0.875em;
 }
 
-/* CSS pour la politique de confidentialité */
-
+/* ── Politique de confidentialité ── */
 .privacy-policy-container {
-  padding: 2rem 4rem;
-  background-color: var(--background-color);
-  min-height: 70vh;
-  font-family: "Kay Pho Du", serif;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 6vh;
 }
 
 .privacy-content {
   max-width: 800px;
   background-color: white;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
   line-height: 1.6;
 }
 
@@ -1160,17 +1032,254 @@ tr:hover{
   color: var(--text-color);
 }
 
-.privacy-policy-container {
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding-top: 6vh;
+/* ── Mobile ── */
+@media screen and (max-width: 767px) {
+  .leftPart {
+    width: 100vw;
+    overflow-x: hidden;
+  }
 
-.cardProduct{
-  cursor: pointer;
-  width: 18rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-}
+  .rightPart {
+    display: none;
+  }
 
+  .navBarHeader {
+    width: 100vw;
+    padding: 0 15px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--red-color);
+    border-bottom: none;
+  }
+
+  .navBarHeader img {
+    width: 30px;
+  }
+
+  #titlePizz {
+    font-size: 24px;
+    color: whitesmoke;
+  }
+
+  .nav {
+    display: flex;
+    height: fit-content;
+    width: 100%;
+  }
+
+  .navBar {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .navLinkGrey, .navLinkWhite {
+    height: 8vh;
+    width: 50%;
+    font-size: 20px;
+  }
+
+  .navLinkGrey a, .navLinkWhite a {
+    font-size: 20px;
+  }
+
+  .navLinkGreyPhone {
+    height: 8vh;
+    width: 75%;
+    font-size: 20px;
+    background-color: var(--green-color);
+  }
+
+  .navLinkGreyPhone a {
+    color: whitesmoke;
+  }
+
+  .phoneCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8vh;
+    width: 25%;
+    font-size: 20px;
+    border: 1px solid #d0c9c9;
+  }
+
+  .phoneCart img {
+    width: 35px;
+  }
+
+  .navBarButton {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  #loginButton {
+    width: auto;
+    padding: 5px 15px;
+    background-color: var(--red-color);
+  }
+
+  #loginButton a {
+    font-size: 14px;
+    color: whitesmoke;
+  }
+
+  /* Page d'accueil */
+  .homePageInfos {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #pizzaOfTheMonth {
+    width: 100%;
+    height: 10vh;
+    padding: 0 20px;
+  }
+
+  #pizzaOfTheMonth h2 {
+    width: 85%;
+    font-size: 16px;
+  }
+
+  #dayLocation {
+    border-left: none;
+    border-top: none;
+    border-left: 4px solid var(--red-color);
+    padding: 12px 15px;
+    min-height: 8vh;
+    gap: 12px;
+  }
+
+  .dayInfoDate {
+    font-size: 14px;
+  }
+
+  .dayInfoLabel {
+    font-size: 12px;
+  }
+
+  .locationItem p.locationName {
+    font-size: 14px;
+  }
+
+  .newIngredient {
+    padding: 10px 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .formCategory {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .listItems {
+    gap: 15px;
+    padding: 15px;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 0;
+  }
+
+  .productModal {
+    width: 90vw;
+    padding: 15px;
+  }
+
+  #footer {
+    width: 100vw;
+    padding: 5px;
+    font-size: 12px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .listLocations {
+    position: relative;
+    padding: 15px;
+  }
+
+  .listLocations h2 {
+    font-size: 24px;
+  }
+
+  .listLocations li {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .bodyLogin {
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .loginForm {
+    width: 100%;
+  }
+
+  .noAccount {
+    width: 100%;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  .table {
+    width: 100%;
+    margin-left: 0;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .orderRecapDiv div {
+    width: 90%;
+  }
+
+  .order-recap-container {
+    padding: 15px;
+  }
+
+  .item-content {
+    flex-direction: column;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .adminPanel {
+    gap: 15px;
+  }
+
+  .adminCard img {
+    height: auto;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .adminForm {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .commandPanelPizza {
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 15px;
+  }
 }

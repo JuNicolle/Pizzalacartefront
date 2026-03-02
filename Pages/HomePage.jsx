@@ -83,18 +83,21 @@ const HomePage = () => {
           </div>
 
           <div id="dayLocation">
-            <h3>Aujourd'hui nous sommes à : </h3>
+            <div className="dayInfo">
+              <span className="dayInfoDate">{currentDay}</span>
+              <span className="dayInfoLabel">On est à :</span>
+            </div>
+            <div className="dayInfoSep" />
             {todayLocations.length > 0 ? (
               <div className="locationList">
-                {todayLocations.map((location, index) => (
+                {todayLocations.map((location) => (
                   <div key={location.id_location} className="locationItem">
                     <p className="locationName">{location.name}</p>
-                    {index < todayLocations.length - 1 && <hr />}
                   </div>
                 ))}
               </div>
             ) : (
-              <p>Aucun emplacement disponible aujourd'hui</p>
+              <p className="noLocationMsg">Aucun emplacement disponible</p>
             )}
           </div>
 
